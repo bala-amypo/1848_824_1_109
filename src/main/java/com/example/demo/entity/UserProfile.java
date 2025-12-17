@@ -58,4 +58,12 @@ public class UserProfile{
     public void setActive(){
         this.active=active;
     }
+    public LocalDateTime getCreatedAt(){
+        return createdAt;
+    }
+    public void setCreatedAt(){
+        this.createdAt=createdAt;
+    }
+
+    public UserProfile()
 }
