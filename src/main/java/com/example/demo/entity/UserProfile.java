@@ -1,2 +1,4 @@
 package com.example.demo.entity;
-import jakarta 
+import jakarta.perisistance.Entity;
+@Entity
+public 
