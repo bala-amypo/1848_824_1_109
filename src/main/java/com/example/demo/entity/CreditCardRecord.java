@@ -72,4 +72,7 @@ public class CreditCardRecord{
         this.status=status;
         this.createdAt=createdAt;
     }
+    public CreditCardRecord(){
+        
+    }
 }
