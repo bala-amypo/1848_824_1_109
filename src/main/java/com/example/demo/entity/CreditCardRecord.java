@@ -26,5 +26,25 @@ public class CreditCardRecord{
     public String getCardName(){
         return cardName;
     }
-    
+    public void setCardName(String cardName){
+        this.cardName=cardName;
+    }
+     public String getIssuer(){
+        return issuer;
+    }
+    public void setIssuer(String issuer){
+        this.issuer=issuer;
+    }
+     public String getCardType(){
+        return cardType;
+    }
+    public void setCardType(String cardType){
+        this.cardType=cardType;
+    }
+     public Double getAnnualFee(){
+        return annualFee;
+    }
+    public void setAnnualFee(Double annualFee){
+        this.annualFee=annualFee;
+    }
 }
