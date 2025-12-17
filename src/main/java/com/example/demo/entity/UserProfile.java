@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import java.time.LocalDateTime;
 @Entity
@@ -72,6 +73,10 @@ public class UserProfile{
         this.email=email;
         this.password=password;
         this.role=role;
-        
+        this.active=active;
+        this.createdAt=createdAt;
+    }
+    public UserProfile(){
+
     }
 }
