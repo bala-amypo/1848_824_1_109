@@ -65,5 +65,7 @@ public class UserProfile{
         this.createdAt=createdAt;
     }
 
-    public UserProfile()
+    public UserProfile(Long id,String userId,String fullName,String email,String password,String role,Boolean active,LocalDateTime createdAt){
+        
+    }
 }
