@@ -1,6 +1,6 @@
 package com.example.demo.entity;
-import.jakarta.perisistance.Entity;
-import.jakarta.perisistance.Id;
+import.jakarta.persistence.Entity;
+import.jakarta.persistence.Id;
 @Entity
 public class CreditCardRecord{
     @Id
@@ -73,6 +73,6 @@ public class CreditCardRecord{
         this.createdAt=createdAt;
     }
     public CreditCardRecord(){
-        
+
     }
 }
