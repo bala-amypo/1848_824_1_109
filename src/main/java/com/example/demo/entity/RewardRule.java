@@ -45,6 +45,17 @@ public class RewardRule{
         return active;
     }
     public void setActive(Boolean active){
-        this.;
+        this.active=active;
+    }
+    public RewardRule(Long id,Long cardId,String category,String rewardType,Double multiplier,Boolean active){
+        this.id=id;
+        this.cardId=cardId;
+        this.category=category;
+        this.rewardType=rewardType;
+        this.multiplier=multiplier;
+        this.active=active;
+    }
+    public RewardRule(){
+        
     }
 }
