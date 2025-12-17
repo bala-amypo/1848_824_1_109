@@ -2,10 +2,14 @@ package com.example.demo.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedType;
+import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
+
 @Entity
 public class UserProfile{
     @Id
+    @GeneratedValue(strategy=GeneratedType.IDENTITY)
     private Long id;
     @Column(unique=true)
     private String userId;
