@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import java.time.LocalDateTime;
 @Entity
 public class CreditCardRecord{
     @Id
