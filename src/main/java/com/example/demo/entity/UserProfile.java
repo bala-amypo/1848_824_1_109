@@ -7,5 +7,6 @@ public class UserProfile{
     @column(unique=true)
     private String userId;
     private String fullName;
-    private 
+    @column(unique=true)
+    private String email;
 }
