@@ -1,4 +1,11 @@
 package com.example.demo.entity;
 import jakarta.perisistance.Entity;
 @Entity
-public class UserPr
+public class UserProfile{
+    @Id
+    private Long id;
+    @column(unique=true)
+    private String userId;
+    private String fullName;
+    private 
+}

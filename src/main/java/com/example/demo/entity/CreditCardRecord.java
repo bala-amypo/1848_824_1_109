@@ -2,6 +2,7 @@ package com.example.demo.entity;
 import.jakarta.perisistance.Entity;
 @Entity
 public class CreditCardRecord{
+    @Id
     private Long id;
     private Long userId;
     private String cardName;
