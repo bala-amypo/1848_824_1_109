@@ -43,7 +43,19 @@ public class UserProfile{
      public String getPassword(){
         return password;
     }
-    public void setUserId(){
-        this.userId=userId;
+    public void setPassword(){
+        this.password=password;
+    }
+     public String getRole(){
+        return role;
+    }
+    public void setRole(){
+        this.role=role;
+    }
+     public Boolean getActive(){
+        return active;
+    }
+    public void setActive(){
+        this.active=active;
     }
 }
