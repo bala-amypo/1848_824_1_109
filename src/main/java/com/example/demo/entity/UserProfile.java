@@ -16,5 +16,16 @@ public class UserProfile{
     private Boolean active;
     private LocalDateTime createdAt;
 
-    
+    public Long getId(){
+        return id;
+    }
+    public void setId(){
+        this.id=id;
+    }
+    public String getUserId(){
+        return userId;
+    }
+    public void setUserId(){
+        this.userId=userId;
+    }
 }
