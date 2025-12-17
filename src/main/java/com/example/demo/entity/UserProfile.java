@@ -66,6 +66,12 @@ public class UserProfile{
     }
 
     public UserProfile(Long id,String userId,String fullName,String email,String password,String role,Boolean active,LocalDateTime createdAt){
+        this.id=id;
+        this.userId=userId;
+        this.fullName=fullName;
+        this.email=email;
+        this.password=password;
+        this.role=role;
         
     }
 }
