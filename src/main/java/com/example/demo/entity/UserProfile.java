@@ -28,4 +28,22 @@ public class UserProfile{
     public void setUserId(){
         this.userId=userId;
     }
+     public String getFullName(){
+        return fullName;
+    }
+    public void setFullName(){
+        this.fullName=fullName;
+    }
+     public String getEmail(){
+        return email;
+    }
+    public void setEmail(){
+        this.email=email;
+    }
+     public String getPassword(){
+        return password;
+    }
+    public void setUserId(){
+        this.userId=userId;
+    }
 }
