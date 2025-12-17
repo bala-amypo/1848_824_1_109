@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 import.jakarta.perisistance.Entity;
+import.jakarta.perisistance.Id;
 @Entity
 public class CreditCardRecord{
     @Id
@@ -60,4 +61,5 @@ public class CreditCardRecord{
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
+
 }
