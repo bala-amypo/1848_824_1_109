@@ -62,5 +62,14 @@ public class CreditCardRecord{
         this.createdAt=createdAt;
     }
 
-    public CreditCardRecord(Long id,Long userId,String cardName,String issuer,String )
+    public CreditCardRecord(Long id,Long userId,String cardName,String issuer,String cardType,Double annualFee,String status,LocalDateTime createdAt ){
+        this.id=id;
+        this.userId=userId;
+        this.cardName=cardName;
+        this.issuer=issuer;
+        this.cardType=cardType;
+        this.annualFee=annualFee;
+        this.status=status;
+        this.createdAt=createdAt;
+    }
 }
