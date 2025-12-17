@@ -26,5 +26,25 @@ public class RewardRule{
     public String getCategory(){
         return category;
     }
-    public void setC
+    public void setCategory(String category){
+        this.category=category;
+    }
+       public String getRewardType(){
+        return rewardType;
+    }
+    public void setRewardType(String rewardType){
+        this.rewardType=rewardType;
+    }
+     public Double getMultiplier(){
+        return multiplier;
+    }
+    public void setMultiplier(Double multiplier){
+        this.multiplier=multiplier;
+    }
+     public Boolean getActive(){
+        return active;
+    }
+    public void setActive(Boolean active){
+        this.;
+    }
 }
