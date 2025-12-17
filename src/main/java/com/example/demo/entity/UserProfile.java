@@ -1,5 +1,5 @@
 package com.example.demo.entity;
-import jakarta.perisistance.Entity;
+import jakarta.persistence.Entity;
 @Entity
 public class UserProfile{
     @Id
