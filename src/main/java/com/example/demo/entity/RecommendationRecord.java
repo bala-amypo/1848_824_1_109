@@ -59,8 +59,8 @@ public class RecommendationRecord{
         this.purchaseIntentId=purchaseIntentId;
         this.recommendedCardId=recommendedCardId;
         this.expectedRewardValue=expectedRewardValue;
-        this.merchant=merchant;
-        this.intentDate=intentDate;
+        this.calculationDetailsJson=calculationDetailsJson;
+        this.recommendedAt=recommendedAt;
     }
     public RecommendedRecord(){
 
