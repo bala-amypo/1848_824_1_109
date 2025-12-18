@@ -1,5 +1,9 @@
 package com.example.demo.service.impl;
-import 
+import com.example.demo.repository.UserProfileRepository;
+import com.example.demo.entity.UserProfile;
+import com.example.demo.service.UserProfileService;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.
 
 @Service
 public class UserProfileServiceImpl implements UserProfileService{
