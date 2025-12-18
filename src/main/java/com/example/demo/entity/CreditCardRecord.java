@@ -3,7 +3,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 import jakarta.persistence.GeneratedType;
-import 
+import jakarta.persistence.GeneratedValue;
 @Entity
 public class CreditCardRecord{
     @Id
