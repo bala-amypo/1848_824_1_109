@@ -42,5 +42,12 @@ public class PurchaseIntentRecord{
     public void setMerchant(String merchant){
         this.merchant=merchant;
     }
-    public LocalDateTime 
+    public LocalDateTime getIntentDate(){
+        return intentDate;
+    }
+    public void setIntentDate(LocalDateTime intentDate){
+        this.intentDate=intentDate;
+    }
+
+    public PurchaseIntentRecord(Long id,Long userId,Double amount,)
 }
