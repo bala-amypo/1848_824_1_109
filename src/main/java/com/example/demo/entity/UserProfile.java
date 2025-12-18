@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 public class UserProfile{
     @Id
-    @GeneratedValue(strategy=GeneratedType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     @Column(unique=true)
     private String userId;
