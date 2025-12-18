@@ -4,10 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.demo.entity.UserProfile;
 import com.example.demo.service.UserProfileService;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class UserProfileController{
     @Autowired
-    UserProfileService 
+    UserProfileService ups;
+    @PostMapping("/UserProfile")
+    public UserProfile addUserProfile(@RequestBody UserProfile profile ){
+        return ups.save()
+    }
 }
