@@ -49,5 +49,12 @@ public class PurchaseIntentRecord{
         this.intentDate=intentDate;
     }
 
-    public PurchaseIntentRecord(Long id,Long userId,Double amount,)
+    public PurchaseIntentRecord(Long id,Long userId,Double amount,String category,String Merchant,LocalDateTime intentDate){
+        this.id=id;
+        this.userId=userId;
+        this.amount=amount;
+        this.category=category;
+        this.merchant=merchant;
+        this.intent
+    }
 }
