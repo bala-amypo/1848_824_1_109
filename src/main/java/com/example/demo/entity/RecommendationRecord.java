@@ -31,7 +31,7 @@ public class RecommendationRecord{
     public Long getRecommendedCardId(){
         return recommendedCardId;
     }
-    public void setAmount(Long recommendedCardId){
+    public void setRecommendedCardId(Long recommendedCardId){
         this.recommendedCardId=recommendedCardId;
     }
     public Double getExpectedRewardValue(){
@@ -43,17 +43,18 @@ public class RecommendationRecord{
     public String getCalculationDetailsJson(){
         return calculationDetailsJson;
     }
-    public void setCalculationDetailsJson(String ){
-        this.merchant=merchant;
-    }
-    public LocalDateTime getIntentDate(){
-        return intentDate;
-    }
-    public void setIntentDate(LocalDateTime intentDate){
-        this.intentDate=intentDate;
+    public void setCalculationDetailsJson(String calculationDetailsJson){
+        this.calculationDetailsJson=calculationDetailsJson;
     }
 
-    public PurchaseIntentRecord(Long id,Long userId,Double amount,String category,String Merchant,LocalDateTime intentDate){
+    public LocalDateTime getRecommendedAt(){
+        return recommendedAt;
+    }
+    public void setRecommendedAt(LocalDateTime recommendedAt){
+        this.recommentedAt=recommentedAt;
+    }
+
+    public RecommendedRecord(Long id,Long purchaseIntentId,Double amount,String category,String Merchant,LocalDateTime intentDate){
         this.id=id;
         this.userId=userId;
         this.amount=amount;
