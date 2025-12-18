@@ -31,19 +31,19 @@ public class RecommendationRecord{
     public Long getRecommendedCardId(){
         return recommendedCardId;
     }
-    public void setAmount(Double amount){
-        this.amount=amount;
+    public void setAmount(Long recommendedCardId){
+        this.recommendedCardId=recommendedCardId;
     }
-    public String getCategory(){
-        return category;
+    public Double getExpectedRewardValue(){
+        return expectedRewardValue;
     }
-    public void setCategory(String category){
-        this.category=category;
+    public void setExpectedRewardValue(Double expectedRewardValue){
+        this.expectedRewardValue=expectedRewardValue;
     }
-    public String getMerchant(){
-        return merchant;
+    public String getCalculationDetailsJson(){
+        return calculationDetailsJson;
     }
-    public void setMerchant(String merchant){
+    public void setCalculationDetailsJson(String ){
         this.merchant=merchant;
     }
     public LocalDateTime getIntentDate(){
