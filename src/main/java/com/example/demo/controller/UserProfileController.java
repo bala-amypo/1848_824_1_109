@@ -12,6 +12,6 @@ public class UserProfileController{
     UserProfileService ups;
     @PostMapping("/UserProfile")
     public UserProfile addUserProfile(@RequestBody UserProfile profile ){
-        return ups.save()
+        return ups.createUserProfile(profile);
     }
 }
