@@ -2,9 +2,12 @@ package com.example.demo.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import java.time.LocalDateTime;
+import jakarta.persistence.GeneratedType;
+import 
 @Entity
 public class CreditCardRecord{
     @Id
+    @GeneratedValue(strategy=GeneratedType.IDENTITY)
     private Long id;
     private Long userId;
     private String cardName;
