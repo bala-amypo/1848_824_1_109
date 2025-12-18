@@ -1,8 +1,16 @@
 package com.example.demo.service.impl;
 
 
+@Service
+public class UserProfileServiceImpl implements UserProfileService{
 
-public class UserProfileServiceImpl
-{
-    
+@Autowired
+UserProfileRepository upr;
+public UserProfile createUser(UserProfile profile){
+
+return upr.save(profile);
 }
+
+}
+
+    

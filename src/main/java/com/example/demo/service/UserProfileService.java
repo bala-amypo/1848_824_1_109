@@ -2,7 +2,9 @@ package com.example.demo.service;
 
 
 
-public class UserProfileService
+public interface UserProfileService
 {
-    
+    UserProfile createUser(UserProfile profile);
+    Long getUserById(Long id);
+
 }
