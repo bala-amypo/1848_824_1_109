@@ -13,7 +13,6 @@ public class RecommendationRecord{
     private Long recommendedCardId;
     private Double expectedRewardValue;
     private String calculationDetailsJson;
-    
     private LocalDateTime recommendedAt;
 
     public Long getId(){
@@ -51,10 +50,10 @@ public class RecommendationRecord{
         return recommendedAt;
     }
     public void setRecommendedAt(LocalDateTime recommendedAt){
-        this.recommentedAt=recommentedAt;
+        this.recommendedAt=recommendedAt;
     }
 
-    public RecommendedRecord(Long id,Long purchaseIntentId,Long recommendedCardId,Double expectedRewardValue,String calculationDetailsJson,LocalDateTime recommendedAt){
+    public RecommendationRecord(Long id,Long purchaseIntentId,Long recommendedCardId,Double expectedRewardValue,String calculationDetailsJson,LocalDateTime recommendedAt){
         this.id=id;
         this.purchaseIntentId=purchaseIntentId;
         this.recommendedCardId=recommendedCardId;
@@ -62,7 +61,7 @@ public class RecommendationRecord{
         this.calculationDetailsJson=calculationDetailsJson;
         this.recommendedAt=recommendedAt;
     }
-    public RecommendedRecord(){
+    public RecommendationRecord(){
 
     }
     
