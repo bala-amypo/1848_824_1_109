@@ -1,13 +1,13 @@
 package com.example.demo.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedType;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
 
 @Entity
 public class RewardRule{
     @Id
-    @GeneratedValue(strategy=GeneratedType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private Long cardId;
     private String category;

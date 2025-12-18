@@ -1,10 +1,13 @@
 package com.example.demo.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import java.time.LocalDateTime;
 @Entity
 public class PurchaseIntentRecord{
     @Id
-    @GeneratedValue(strategy=GeneratedType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private Long userId;
     private Double amount;
@@ -55,6 +58,9 @@ public class PurchaseIntentRecord{
         this.amount=amount;
         this.category=category;
         this.merchant=merchant;
-        this.intent
+        this.intentDate=intentDate;
+    }
+    public PurchaseIntentRecord(){
+
     }
 }
