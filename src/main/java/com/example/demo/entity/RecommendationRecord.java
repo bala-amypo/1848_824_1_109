@@ -26,7 +26,7 @@ public class RecommendationRecord{
         return purchaseIntentId;
     }
     public void setPurchaseIntentId(Long purchaseIntentId){
-        this.purchaseIntentId;
+        this.purchaseIntentId=purchaseIntentId;
     }
     public Long getRecommendedCardId(){
         return recommendedCardId;
@@ -54,7 +54,7 @@ public class RecommendationRecord{
         this.recommentedAt=recommentedAt;
     }
 
-    public RecommendedRecord(Long id,Long purchaseIntentId,Long recommendedCardId,Double expectedRewardValue,String CalculationDetailsJson,LocalDateTime recommendedAt){
+    public RecommendedRecord(Long id,Long purchaseIntentId,Long recommendedCardId,Double expectedRewardValue,String calculationDetailsJson,LocalDateTime recommendedAt){
         this.id=id;
         this.purchaseIntentId=purchaseIntentId;
         this.recommendedCardId=recommendedCardId;
