@@ -11,9 +11,10 @@ public class RecommendationRecord{
     private Long id;
     private Long purchaseIntentId;
     private Long recommendedCardId;
-    private String category;
-    private String merchant;
-    private LocalDateTime intentDate;
+    private Double expectedRewardValue;
+    private String calculationDetailsJson;
+    
+    private LocalDateTime recommendedAt;
 
     public Long getId(){
         return id;
@@ -21,14 +22,14 @@ public class RecommendationRecord{
     public void setId(Long id){
         this.id=id;
     }
-    public Long getUserId(){
-        return userId;
+    public Long getPurchaseIntentId(){
+        return purchaseIntentId;
     }
-    public void setUserId(Long userId){
-        this.userId=userId;
+    public void setPurchaseIntentId(Long purchaseIntentId){
+        this.purchaseIntentId;
     }
-    public Double getAmount(){
-        return amount;
+    public Long getRecommendedCardId(){
+        return recommendedCardId;
     }
     public void setAmount(Double amount){
         this.amount=amount;
