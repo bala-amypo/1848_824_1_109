@@ -54,15 +54,15 @@ public class RecommendationRecord{
         this.recommentedAt=recommentedAt;
     }
 
-    public RecommendedRecord(Long id,Long purchaseIntentId,Double amount,String category,String Merchant,LocalDateTime intentDate){
+    public RecommendedRecord(Long id,Long purchaseIntentId,Long recommendedCardId,Double expectedRewardValue,String CalculationDetailsJson,LocalDateTime recommendedAt){
         this.id=id;
-        this.userId=userId;
-        this.amount=amount;
-        this.category=category;
+        this.purchaseIntentId=purchaseIntentId;
+        this.recommendedCardId=recommendedCardId;
+        this.expectedRewardValue=expectedRewardValue;
         this.merchant=merchant;
         this.intentDate=intentDate;
     }
-    public PurchaseIntentRecord(){
+    public RecommendedRecord(){
 
     }
     
