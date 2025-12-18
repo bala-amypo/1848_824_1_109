@@ -4,7 +4,7 @@ import com.example.demo.entity.UserProfile;
 
 public interface UserProfileService
 {
-    UserProfile createUser(UserProfile profile);
-    Long getUserById(Long id);
+    UserProfile createUserProfile(UserProfile profile);
+   // Long getUserById(Long id);
 
 }

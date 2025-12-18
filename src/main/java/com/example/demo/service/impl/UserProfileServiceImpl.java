@@ -11,10 +11,11 @@ public class UserProfileServiceImpl implements UserProfileService{
 
 @Autowired
 UserProfileRepository upr;
-public UserProfile createUser(UserProfile profile){
+public UserProfile createUserProfile(UserProfile profile){
 
 return upr.save(profile);
 }
+ 
 
 }
 
