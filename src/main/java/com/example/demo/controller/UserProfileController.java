@@ -17,6 +17,6 @@ public class UserProfileController{
     }
     @GetMapping("/{id}")
     public UserProfile getUsertd(@PathVariable Long id){
-
+        ups.getUserById(Long id);
     }
 }
