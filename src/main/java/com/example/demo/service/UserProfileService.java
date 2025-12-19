@@ -7,4 +7,4 @@ public interface UserProfileService
     UserProfile createUserProfile(UserProfile profile);
     UserProfile getUserById(Long id);
 
-}
+}   
