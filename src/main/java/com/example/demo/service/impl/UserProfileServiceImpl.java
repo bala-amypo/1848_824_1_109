@@ -7,12 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Service
-public interface UserProfileServiceImpl implements UserProfileService{
+public class UserProfileServiceImpl implements UserProfileService{
 
 @Autowired
 UserProfileRepository upr;
 public UserProfile createUserProfile(UserProfile profile){
-
 return upr.save(profile);
 }
 
