@@ -20,7 +20,7 @@ public class UserProfileController{
 
     @GetMapping("/{userId}")
     public UserProfile getUser(@PathVariable String userId){
-        return ups.getByUserId(userId);
+        return ups.findByUserId(userId);
     }
     
 }
