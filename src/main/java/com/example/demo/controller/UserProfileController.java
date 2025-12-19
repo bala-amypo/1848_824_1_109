@@ -16,7 +16,7 @@ public class UserProfileController{
         return ups.createUserProfile(profile);
     }
     @GetMapping("/{id}")
-    public UserProfile getUsertd(@PathVariable Long id){
-        ups.getUserById(Long id);
+    public UserProfile getUserId(@PathVariable Long id){
+        return ups.getUserById(Long id);
     }
 }
