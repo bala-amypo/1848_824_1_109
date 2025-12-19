@@ -5,6 +5,7 @@ import com.example.demo.entity.UserProfile;
 public interface UserProfileService
 {
     UserProfile createUserProfile(UserProfile profile);
-    UsergetUserById(Long id);
+    UserProfile getUserById(Long id);
+    UserProfile findByUserId(String userId)
 
 }   
