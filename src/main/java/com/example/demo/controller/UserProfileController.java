@@ -17,8 +17,10 @@ public class UserProfileController{
     public UserProfile addUserProfile(@RequestBody UserProfile profile ){
         return ups.createUserProfile(profile);
     }
+
     @GetMapping("/{id}")
     public UserProfile getUserId(@PathVariable Long id){
         return ups.getUserById(id);
     }
+    
 }
