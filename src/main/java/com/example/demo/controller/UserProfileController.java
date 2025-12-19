@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
+@RequestMapping("/userprofile")
 public class UserProfileController{
     @Autowired
     UserProfileService ups;
