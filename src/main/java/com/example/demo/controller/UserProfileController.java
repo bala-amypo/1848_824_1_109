@@ -5,6 +5,7 @@ import com.example.demo.entity.UserProfile;
 import com.example.demo.service.UserProfileService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 public class UserProfileController{
@@ -13,5 +14,9 @@ public class UserProfileController{
     @PostMapping("/UserProfile")
     public UserProfile addUserProfile(@RequestBody UserProfile profile ){
         return ups.createUserProfile(profile);
+    }
+    @GetMapping("/{id}")
+    public UserProfile getUsertd(@PathVariable Long id){
+
     }
 }
