@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-@RequestMapping("/userprofile")
+
 public class UserProfileController{
     @Autowired
     UserProfileService ups;
@@ -19,8 +19,8 @@ public class UserProfileController{
         return ups.createUserProfile(profile);
     }
 
-    @GetMapping("/by-id/{id}")
-    public UserProfile getById(@PathVariable("id") Long id){
+    @GetMapping("/{id}")
+    public UserProfile getById(@PathVariable Long id){
         return ups.getUserById(id);
     }
     
