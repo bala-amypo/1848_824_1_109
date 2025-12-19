@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Service
-public class UserProfileServiceImpl implements UserProfileService{
+public interface UserProfileServiceImpl implements UserProfileService{
 
 @Autowired
 UserProfileRepository upr;
@@ -15,9 +15,7 @@ public UserProfile createUserProfile(UserProfile profile){
 
 return upr.save(profile);
 }
-// public UserProfile getUserById(Long id){
-//     return upr.findById(id).orElse(null);
-// }
+
 public UserProfile findByUserId(String userId){
     return upr.findByUserId(userId).orElse(null);
 }
