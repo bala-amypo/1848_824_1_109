@@ -27,7 +27,6 @@ public class CreditCardRecord {
     @Column(name = "card_type", nullable = false)
     private String cardType;
 
-    // annualFee must be >= 0
     @Column(name = "annual_fee", nullable = false)
     private Double annualFee;
 
@@ -37,17 +36,16 @@ public class CreditCardRecord {
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-   
+    // ⭐ Many-to-Many (inverse side)
+    
+    @ManyToMany(mappedBy = "favouriteCards")
+    private Set<UserProfile> favouredByUsers = new HashSet<>();
+
     @PrePersist
     public void onCreate() {
         this.createdAt = LocalDateTime.now();
-
-        if (this.annualFee == null || this.annualFee < 0) {
-            throw new IllegalArgumentException("Annual fee must be >= 0");
-        }
     }
 
-    // 🔹 Constructors
     public CreditCardRecord() {}
 
     public CreditCardRecord(Long id, Long userId, String cardName,
@@ -64,7 +62,8 @@ public class CreditCardRecord {
         this.createdAt = createdAt;
     }
 
-    // 🔹 Getters & Setters
+    // Getters & setters (unchanged)
+
 
     public Long getId() {
         return id;
