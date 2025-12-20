@@ -14,7 +14,7 @@ public class CreditCardServiceImpl implements CreditCardService {
 
     @Override
     public CreditCardRecord addCard(CreditCardRecord card) {
-        return cc.save(card);
+        return ccr.save(card);
     }
 
     @Override
@@ -28,23 +28,23 @@ public class CreditCardServiceImpl implements CreditCardService {
             existing.setCardType(updated.getCardType());
             existing.setAnnualFee(updated.getAnnualFee());
             existing.setStatus(updated.getStatus());
-            return creditCardRepository.save(existing);
+            return ccr.save(existing);
         }
         return null;
     }
 
     @Override
     public List<CreditCardRecord> getCardsByUser(Long userId) {
-        return creditCardRepository.findByUserId(userId);
+        return ccr.findByUserId(userId);
     }
 
     @Override
     public CreditCardRecord getCardById(Long id) {
-        return creditCardRepository.findById(id).orElse(null);
+        return ccr.findById(id).orElse(null);
     }
 
     @Override
     public List<CreditCardRecord> getAllCards() {
-        return creditCardRepository.findAll();
+        return ccr.findAll();
     }
 }
