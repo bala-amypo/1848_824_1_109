@@ -26,7 +26,7 @@ public class UserProfile {
     private String role;
 
     @Column(name = "active")
-    private boolean active;
+    private Boolean active;
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
@@ -45,7 +45,7 @@ public class UserProfile {
 
     public UserProfile(Long id, String userId, String fullName,
                        String email, String password,
-                       String role, boolean active,
+                       String role, Boolean active,
                        LocalDateTime createdAt) {
         this.id = id;
         this.userId = userId;
