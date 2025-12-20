@@ -1,6 +1,6 @@
 package com.example.demo.service;
 import com.example.demo.entity.UserProfile;
-
+import java.util
 
 public interface UserProfileService
 {
@@ -8,5 +8,5 @@ public interface UserProfileService
     UserProfile getUserById(Long id);
     UserProfile findByUserId(String userId);
     List<UserProfile>getAllUsers();
-    UserProfile updateUserStatus(Long id,boolean active)
+    UserProfile updateUserStatus(Long id,boolean active);
 }   

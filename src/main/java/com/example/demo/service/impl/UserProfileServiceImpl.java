@@ -22,6 +22,9 @@ public UserProfile getUserById(Long id){
 public UserProfile findByUserId(String userId){
     return upr.findByUserId(userId).orElse(null);
 }
+public List<UserProfile> getAllUsers(){
+    return upr.findAll();
+}
 
 }
 
