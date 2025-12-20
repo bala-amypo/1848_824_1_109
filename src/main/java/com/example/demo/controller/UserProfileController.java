@@ -35,12 +35,9 @@ public class UserProfileController{
     public List<UserProfile> getAllUsers(){
         return ups.getAllUsers();
     }
-    @GetMapping("/test")
-public String test() {
-    return "Controller is working";
-}
+ 
 
-    @PutMapping("/status")
+    @PutMapping("/{id}/status")
     public UserProfile updateStatus(@PathVariable Long id,@RequestParam Boolean active){
         return ups.updateUserStatus(id,active);
     }    
