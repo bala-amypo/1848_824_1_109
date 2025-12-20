@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.HashSet;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "credit_card_record")
@@ -37,7 +37,7 @@ public class CreditCardRecord {
     private LocalDateTime createdAt;
 
     // ⭐ Many-to-Many (inverse side)
-    
+    @JsonIgnore
     @ManyToMany(mappedBy = "favouriteCards")
     private Set<UserProfile> favouredByUsers = new HashSet<>();
 
