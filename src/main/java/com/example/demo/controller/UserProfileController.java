@@ -27,8 +27,8 @@ public class UserProfileController{
     public UserProfile getUser(@PathVariable String userId){
         return ups.findByUserId(userId);
     }
-    
-    
+    @GetMapping("/{AllUsers}")
+
 
     
 }

@@ -26,7 +26,13 @@ public List<UserProfile> getAllUsers(){
     return upr.findAll();
 }
 public UserProfile updateUserStatus(Long id,boolean active){
-    UserProfile user=
+    UserProfile user=upr.findById(id).orElse(null);
+
+    if(user!=null){
+        user.setActive(active);
+        upr.save(user)
+    }
+    return null;
 }
 
 }
