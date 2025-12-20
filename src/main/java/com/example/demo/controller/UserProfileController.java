@@ -32,6 +32,9 @@ public class UserProfileController{
         return ups.getAllUsers();
     }
     
+    @PutMapping("/status")
+    public UserProfile userStatus(@PathVariable)    
+    
 
     
 }
