@@ -2,28 +2,25 @@ package com.example.demo.service.impl;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.example.demo.entity.CreditCardRecord;
-import com.example.demo.repository.CreditCardRepository;
+import com.example.demo.repository.CreditCardRecordRepository;
 import com.example.demo.service.CreditCardService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class CreditCardServiceImpl implements CreditCardService {
     
-    @Auto
-    CreditCardRepository creditCardRepository;
-
-    public CreditCardServiceImpl(CreditCardRepository creditCardRepository) {
-        this.creditCardRepository = creditCardRepository;
-    }
+    @Autowired
+    CreditCardRecordRepository ccr;
 
     @Override
     public CreditCardRecord addCard(CreditCardRecord card) {
-        return creditCardRepository.save(card);
+        return cc.save(card);
     }
 
     @Override
     public CreditCardRecord updateCard(Long id, CreditCardRecord updated) {
         CreditCardRecord existing =
-                creditCardRepository.findById(id).orElse(null);
+                ccr.findById(id).orElse(null);
 
         if (existing != null) {
             existing.setCardName(updated.getCardName());
