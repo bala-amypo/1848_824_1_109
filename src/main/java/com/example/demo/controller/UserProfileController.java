@@ -27,10 +27,10 @@ public class UserProfileController{
         return ups.getUserById(id);
     }
 
-    //@GetMapping("/{userId}")
-    //public UserProfile getUser(@PathVariable String userId){
-       // return ups.findByUserId(userId);
-    //}
+    @GetMapping("/{userId}")
+    public UserProfile getUser(@PathVariable String userId){
+        return ups.findByUserId(userId);
+    }
     @GetMapping
     public List<UserProfile> getAllUsers(){
         return ups.getAllUsers();
