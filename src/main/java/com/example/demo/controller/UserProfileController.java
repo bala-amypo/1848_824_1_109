@@ -22,12 +22,12 @@ public class UserProfileController{
         return ups.createUserProfile(profile);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
      public UserProfile getId(@PathVariable Long id){
         return ups.getUserById(id);
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/userid/{userId}")
     public UserProfile getUser(@PathVariable String userId){
         return ups.findByUserId(userId);
     }
