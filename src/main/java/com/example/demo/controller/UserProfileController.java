@@ -28,4 +28,7 @@ public class UserProfileController{
         return ups.findByUserId(userId);
     }
     
+    
+
+    
 }
