@@ -1,20 +1,17 @@
 package com.example.demo.entity;
-
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
-
 @Entity
-@Table(name = "user_profile")
 public class UserProfile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id", unique = true, nullable = false)
+    @Column(unique = true)
     private String userId;
 
-    @Column(name = "full_name")
+   
     private String fullName;
 
     @Column(name = "email", unique = true, nullable = false)
