@@ -15,9 +15,14 @@ public UserProfile createUserProfile(UserProfile profile){
 return upr.save(profile);
 }
 
+public UserProfile getUserById(Long id){
+    return upr.getBy
+}
+
 public UserProfile findByUserId(String userId){
     return upr.findByUserId(userId).orElse(null);
 }
+
 }
 
     
