@@ -5,7 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
-
+import jakarta.persistence.PrePersist;
 
 @Entity
 public class UserProfile {
