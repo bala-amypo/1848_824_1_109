@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 @RequestMapping("/api/cards")
-public class CreditCardController {
+public class CreditCardRecordController {
 
     CreditCardService ccs;
     @PostMapping
