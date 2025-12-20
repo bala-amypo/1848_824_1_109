@@ -11,20 +11,24 @@ public class UserProfileServiceImpl implements UserProfileService{
 
 @Autowired
 UserProfileRepository upr;
+
+@Override
 public UserProfile createUserProfile(UserProfile profile){
 return upr.save(profile);
 }
-
+@Override
 public UserProfile getUserById(Long id){
     return upr.getById(id);
 }
-
+@Override
 public UserProfile findByUserId(String userId){
     return upr.findByUserId(userId).orElse(null);
 }
+@Override
 public List<UserProfile> getAllUsers(){
     return upr.findAll();
 }
+@Override
 public UserProfile updateUserStatus(Long id,boolean active){
     UserProfile user=upr.findById(id).orElse(null);
 
