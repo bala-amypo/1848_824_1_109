@@ -18,7 +18,7 @@ return upr.save(profile);
 }
 @Override
 public UserProfile getUserById(Long id){
-    return upr.getById(id);
+    return upr.findById(id);
 }
 @Override
 public UserProfile findByUserId(String userId){
@@ -29,12 +29,12 @@ public List<UserProfile> getAllUsers(){
     return upr.findAll();
 }
 @Override
-public UserProfile updateUserStatus(Long id,Boolean active){
+public UserProfile updateUserStatus(Long id,boolean active){
     UserProfile user=upr.findById(id).orElse(null);
 
     if(user!=null){
         user.setActive(active);
-        upr.save(user);
+        return upr.save(user);
     }
     return null;
 }
