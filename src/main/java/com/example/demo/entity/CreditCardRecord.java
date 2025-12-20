@@ -34,7 +34,7 @@ public class CreditCardRecord {
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    // 🔹 Auto populate createdAt
+   
     @PrePersist
     public void onCreate() {
         this.createdAt = LocalDateTime.now();
