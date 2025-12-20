@@ -18,7 +18,7 @@ return upr.save(profile);
 }
 @Override
 public UserProfile getUserById(Long id){
-    return upr.findUserById(id);
+    return upr.findById(id);
 }
 @Override
 public UserProfile findByUserId(String userId){
