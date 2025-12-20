@@ -1,27 +1,41 @@
 package com.example.demo.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.GeneratedValue;
+
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
-import jakarta.persistence.PrePersist;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "user_profile")
 public class UserProfile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
+
+    @Column(unique = true, nullable = false)
     private String userId;
+
     private String fullName;
-    @Column(unique = true)
+
+    @Column(unique = true, nullable = false)
     private String email;
+
     private String password;
     private String role;
     private Boolean active;
+
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
+
+    // ⭐ MANY-TO-MANY RELATIONSHIP (Favourite Cards)
+    @ManyToMany
+    @JoinTable(
+        name = "user_favourite_cards",
+        joinColumns = @JoinColumn(name = "user_profile_id"),
+        inverseJoinColumns = @JoinColumn(name = "credit_card_id")
+    )
+    private Set<CreditCardRecord> favouriteCards = new HashSet<>();
 
     @PrePersist
     public void onCreate() {
@@ -31,55 +45,78 @@ public class UserProfile {
         }
     }
 
+    // ---------------- GETTERS & SETTERS ----------------
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getUserId() {
         return userId;
     }
+
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
     public String getFullName() {
         return fullName;
     }
+
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
     public String getPassword() {
         return password;
     }
+    
     public void setPassword(String password) {
         this.password = password;
     }
+
     public String getRole() {
         return role;
     }
+    
     public void setRole(String role) {
         this.role = role;
     }
+
     public Boolean getActive() {
         return active;
     }
+    
     public void setActive(Boolean active) {
         this.active = active;
     }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-    private void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+
+    public Set<CreditCardRecord> getFavouriteCards() {
+        return favouriteCards;
     }
-        
+
+    public void setFavouriteCards(Set<CreditCardRecord> favouriteCards) {
+        this.favouriteCards = favouriteCards;
+    }
+
+    // ---------------- CONSTRUCTORS ----------------
+
     public UserProfile() {}
 
     public UserProfile(Long id, String userId, String fullName,
@@ -95,5 +132,4 @@ public class UserProfile {
         this.active = active;
         this.createdAt = createdAt;
     }
-
 }

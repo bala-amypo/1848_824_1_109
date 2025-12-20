@@ -2,6 +2,9 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
+import java.util.HashSet;
+
 
 @Entity
 @Table(name = "credit_card_record")
