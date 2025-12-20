@@ -30,7 +30,7 @@ public UserProfile updateUserStatus(Long id,boolean active){
 
     if(user!=null){
         user.setActive(active);
-        upr.save(user)
+        upr.save(user);
     }
     return null;
 }

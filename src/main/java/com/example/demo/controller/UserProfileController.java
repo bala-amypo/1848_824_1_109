@@ -35,7 +35,7 @@ public class UserProfileController{
     }
     
     @PutMapping("/status")
-    public UserProfile updateStatus(@PathVariable Long id,@RequestParm Boolean active){
+    public UserProfile updateStatus(@PathVariable Long id,@RequestParam Boolean active){
         return ups.updateUserStatus(id,active);
     }    
     
