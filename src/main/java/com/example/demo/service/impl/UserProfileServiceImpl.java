@@ -16,7 +16,7 @@ return upr.save(profile);
 }
 
 public UserProfile getUserById(Long id){
-    return upr.getBy
+    return upr.getById(id);
 }
 
 public UserProfile findByUserId(String userId){
