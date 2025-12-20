@@ -29,7 +29,7 @@ public List<UserProfile> getAllUsers(){
     return upr.findAll();
 }
 @Override
-public UserProfile updateUserStatus(Long id,boolean active){
+public UserProfile updateUserStatus(Long id,Boolean active){
     UserProfile user=upr.findById(id).orElse(null);
 
     if(user!=null){
