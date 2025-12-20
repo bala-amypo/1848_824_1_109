@@ -4,7 +4,7 @@ import com.example.demo.entity.UserProfile;
 import com.example.demo.service.UserProfileService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import java.util.List;
 
 @Service
 public class UserProfileServiceImpl implements UserProfileService{
@@ -24,6 +24,9 @@ public UserProfile findByUserId(String userId){
 }
 public List<UserProfile> getAllUsers(){
     return upr.findAll();
+}
+public UserProfile updateUserStatus(Long id,boolean active){
+    UserProfile user=
 }
 
 }
