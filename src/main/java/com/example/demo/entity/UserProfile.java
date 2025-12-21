@@ -1,41 +1,26 @@
 package com.example.demo.entity;
-
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-
+import jakarta.persistence.PrePersist;
 @Entity
-@Table(name = "user_profile")
 public class UserProfile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(unique = true, nullable = false)
     private String userId;
-
     private String fullName;
-
-    @Column(unique = true, nullable = false)
     private String email;
-
     private String password;
     private String role;
     private Boolean active;
-
-    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    // ⭐ MANY-TO-MANY RELATIONSHIP (Favourite Cards)
-    @ManyToMany
-    @JoinTable(
-        name = "user_favourite_cards",
-        joinColumns = @JoinColumn(name = "user_profile_id"),
-        inverseJoinColumns = @JoinColumn(name = "credit_card_id")
-    )
-    private Set<CreditCardRecord> favouriteCards = new HashSet<>();
+
 
     @PrePersist
     public void onCreate() {
