@@ -87,14 +87,9 @@ public class UserProfile {
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-
-    public Set<CreditCardRecord> getFavouriteCards() {
-        return favouriteCards;
-    }
-
-    public void setFavouriteCards(Set<CreditCardRecord> favouriteCards) {
-        this.favouriteCards = favouriteCards;
-    }
+    public void setCreatedAt(LocalDateTime createdAt){
+        this.createdAt=createdAt;
+        }
 
     public UserProfile() {}
 

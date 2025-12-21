@@ -10,7 +10,7 @@ import com.example.demo.service.CreditCardService;
 @Service
 public class CreditCardServiceImpl implements CreditCardService {
 
- @Autowires
+ @Autowired
  CreditCardRecordRepository ccr;
 
     @Override
