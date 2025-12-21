@@ -17,3 +17,4 @@ public class CreditCardServiceImpl implements CreditCardService {
     public CreditCardRecord addCard(CreditCardRecord card) {
         return ccr.save(card);
     }
+}
