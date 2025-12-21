@@ -34,24 +34,4 @@ public class CreditCardRecordController {
 public String ping() {
     return "PING OK";
 }
-
-    //@PutMapping("/{id}")
-    //public CreditCardRecord updateCard(
-           //@PathVariable Long id,
-           // @RequestBody CreditCardRecord updated) {
-
-       // return ccs.updateCard(id, updated);
-    //}
-   // @GetMapping("/{id}")
-    //public CreditCardRecord getCardById(@PathVariable Long id) {
-       // return ccs.getCardById(id);
-    //}
-    //@GetMapping("/user/{userId}")
-    //public List<CreditCardRecord> getCardsByUser(@PathVariable Long userId) {
-       // return ccs.getCardsByUser(userId);
-    //}
-   // @GetMapping
-   // public List<CreditCardRecord> getAllCards() {
-      //  return ccs.getAllCards();
-   // }
 }
