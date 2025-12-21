@@ -11,12 +11,12 @@ import java.util.List;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 
 @RestController
 @RequestMapping("/api/cards")
-@CrossOrigin(origins = "*")
+
 public class CreditCardRecordController {
 
     private final CreditCardService ccs;
@@ -25,10 +25,6 @@ public class CreditCardRecordController {
         this.ccs = ccs;
     }
 
-    @PostMapping(
-        consumes = "application/json",
-        produces = "application/json"
-    )
     public CreditCardRecord addCard(@RequestBody CreditCardRecord card) {
         return ccs.addCard(card);
     }
