@@ -9,3 +9,4 @@ public interface CreditCardService {
     CreditCardRecord getCardById(Long id);
     List<CreditCardRecord> getAllCards();
 }
+ 
