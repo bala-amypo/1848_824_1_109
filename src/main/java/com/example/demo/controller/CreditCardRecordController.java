@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 @RequestMapping("/api/cards")
 public class CreditCardRecordController {
-
+    
+    @Autowired
     CreditCardService ccs;
+    
     @PostMapping
     public CreditCardRecord addCard(@RequestBody CreditCardRecord card) {
         return ccs.addCard(card);
