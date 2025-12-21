@@ -15,18 +15,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 @RequestMapping("/api/cards")
+@CrossOrigin(origins = "*")
 public class CreditCardRecordController {
-    
- 
-    CreditCardService ccs;
-       public CreditCardRecordController(CreditCardService ccs) {
+
+    private final CreditCardService ccs;
+
+    public CreditCardRecordController(CreditCardService ccs) {
         this.ccs = ccs;
     }
 
-    @PostMapping
+    @PostMapping(
+        consumes = "application/json",
+        produces = "application/json"
+    )
     public CreditCardRecord addCard(@RequestBody CreditCardRecord card) {
         return ccs.addCard(card);
     }
+
 
     @PostMapping("/ping")
 public String ping() {
