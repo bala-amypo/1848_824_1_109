@@ -1,45 +1,25 @@
 package com.example.demo.entity;
-
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
-import java.util.Set;
-import java.util.HashSet;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.PrePersist;
 
 @Entity
-@Table(name = "credit_card_record")
 public class CreditCardRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    // Must reference a valid user
-    @Column(name = "user_id", nullable = false)
     private Long userId;
-
-    @Column(name = "card_name", nullable = false)
     private String cardName;
-
-    @Column(name = "issuer", nullable = false)
     private String issuer;
-
-    @Column(name = "card_type", nullable = false)
     private String cardType;
-
-    @Column(name = "annual_fee", nullable = false)
     private Double annualFee;
-
-    @Column(name = "status")
     private String status;
-
-    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
-
-    // ⭐ Many-to-Many (inverse side)
-    @JsonIgnore
-    @ManyToMany(mappedBy = "favouriteCards")
-    private Set<UserProfile> favouredByUsers = new HashSet<>();
 
     @PrePersist
     public void onCreate() {
@@ -61,9 +41,6 @@ public class CreditCardRecord {
         this.status = status;
         this.createdAt = createdAt;
     }
-
-    // Getters & setters (unchanged)
-
 
     public Long getId() {
         return id;

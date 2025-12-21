@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
 import jakarta.persistence.PrePersist;
+
 @Entity
 public class UserProfile {
 
@@ -20,8 +21,6 @@ public class UserProfile {
     private Boolean active;
     private LocalDateTime createdAt;
 
-
-
     @PrePersist
     public void onCreate() {
         this.createdAt = LocalDateTime.now();
@@ -29,9 +28,6 @@ public class UserProfile {
             this.active = true;
         }
     }
-
-    // ---------------- GETTERS & SETTERS ----------------
-
     public Long getId() {
         return id;
     }
@@ -99,8 +95,6 @@ public class UserProfile {
     public void setFavouriteCards(Set<CreditCardRecord> favouriteCards) {
         this.favouriteCards = favouriteCards;
     }
-
-    // ---------------- CONSTRUCTORS ----------------
 
     public UserProfile() {}
 

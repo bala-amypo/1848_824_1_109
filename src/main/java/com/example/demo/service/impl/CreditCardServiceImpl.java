@@ -11,20 +11,12 @@ import com.example.demo.repository.UserProfileRepository;
 import com.example.demo.service.CreditCardService;
 
 @Service
-@Transactional
 public class CreditCardServiceImpl implements CreditCardService {
 
     private final CreditCardRecordRepository ccr;
     private final UserProfileRepository userRepo;
 
-    // ✅ Constructor injection (BEST PRACTICE)
-    public CreditCardServiceImpl(CreditCardRecordRepository ccr,
-                                 UserProfileRepository userRepo) {
-        this.ccr = ccr;
-        this.userRepo = userRepo;
-    }
 
-    // ---------------- ADD CARD ----------------
     @Override
     public CreditCardRecord addCard(CreditCardRecord card) {
 
