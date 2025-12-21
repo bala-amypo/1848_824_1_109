@@ -27,6 +27,12 @@ public class CreditCardRecordController {
     public CreditCardRecord addCard(@RequestBody CreditCardRecord card) {
         return ccs.addCard(card);
     }
+
+    @PostMapping("/ping")
+public String ping() {
+    return "PING OK";
+}
+
     //@PutMapping("/{id}")
     //public CreditCardRecord updateCard(
            //@PathVariable Long id,
