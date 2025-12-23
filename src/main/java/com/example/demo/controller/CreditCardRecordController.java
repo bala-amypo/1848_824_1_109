@@ -24,7 +24,7 @@ public class CreditCardRecordController {
     public CreditCardRecordController(CreditCardService ccs) {
         this.ccs = ccs;
     }
-
+    @PostMapping("/add")
     public CreditCardRecord addCard(@RequestBody CreditCardRecord card) {
         return ccs.addCard(card);
     }
