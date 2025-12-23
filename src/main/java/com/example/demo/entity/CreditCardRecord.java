@@ -13,7 +13,7 @@ public class CreditCardRecord {
     private Long id;
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
-    private Long userId;
+    private UserProfile userId;
     private String cardName;
     private String issuer;
     private String cardType;
