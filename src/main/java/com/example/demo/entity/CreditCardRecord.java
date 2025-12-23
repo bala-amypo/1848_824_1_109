@@ -1,11 +1,9 @@
 package com.example.demo.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.GeneratedValue;
+
 import java.time.LocalDateTime;
-import jakarta.persistence.PrePersist;
+import jakarta.persistence.*;
+import java.util.Set;
+import jakarta.validation.constraints.Min;
 
 @Entity
 public class CreditCardRecord {
@@ -13,10 +11,13 @@ public class CreditCardRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private Long userId;
     private String cardName;
     private String issuer;
     private String cardType;
+    @Min(0)
     private Double annualFee;
     private String status;
     private LocalDateTime createdAt;
