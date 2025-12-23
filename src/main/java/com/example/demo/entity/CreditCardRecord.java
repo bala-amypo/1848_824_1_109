@@ -12,7 +12,7 @@ public class CreditCardRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private Long userId;
     private String cardName;
     private String issuer;
