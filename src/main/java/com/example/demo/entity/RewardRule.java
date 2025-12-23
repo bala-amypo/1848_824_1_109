@@ -1,64 +1,104 @@
 package com.example.demo.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.GeneratedValue;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 
 @Entity
-public class RewardRule{
+@Table(
+    name = "reward_rule",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"card_id", "category"})
+    }
+)
+public class RewardRule {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long cardId;
+
+    // 🔹 Must reference a valid credit card
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "card_id")
+    private CreditCardRecord card;
+
+    @Column(nullable = false)
     private String category;
+
+    @Column(nullable = false)
     private String rewardType;
+
+    @Min(1) // multiplier must be > 0
+    @Column(nullable = false)
     private Double multiplier;
+
+    @Column(nullable = false)
     private Boolean active;
 
-    public Long getId(){
+    public RewardRule() {}
+
+    // -------- Getters & Setters --------
+
+    public Long getId() {
         return id;
     }
-    public void setId(Long id){
-        this.id=id;
+
+    public void setId(Long id) {
+        this.id = id;
     }
-     public Long getCardId(){
-        return cardId;
+
+    public CreditCardRecord getCard() {
+        return card;
     }
-    public void setCardId(Long cardId){
-        this.cardId=cardId;
+
+    public void setCard(CreditCardRecord card) {
+        this.card = card;
     }
-    public String getCategory(){
+
+    public String getCategory() {
         return category;
     }
-    public void setCategory(String category){
-        this.category=category;
+
+    public void setCategory(String category) {
+        this.category = category;
     }
-       public String getRewardType(){
+
+    public String getRewardType() {
         return rewardType;
     }
-    public void setRewardType(String rewardType){
-        this.rewardType=rewardType;
+
+    public void setRewardType(String rewardType) {
+        this.rewardType = rewardType;
     }
-     public Double getMultiplier(){
+
+    public Double getMultiplier() {
         return multiplier;
     }
-    public void setMultiplier(Double multiplier){
-        this.multiplier=multiplier;
+
+    public void setMultiplier(Double multiplier) {
+        this.multiplier = multiplier;
     }
-     public Boolean getActive(){
+
+    public Boolean getActive() {
         return active;
     }
-    public void setActive(Boolean active){
-        this.active=active;
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
-    public RewardRule(Long id,Long cardId,String category,String rewardType,Double multiplier,Boolean active){
-        this.id=id;
-        this.cardId=cardId;
-        this.category=category;
-        this.rewardType=rewardType;
-        this.multiplier=multiplier;
-        this.active=active;
-    }
+
+
+public RewardRule(CreditCardRecord card,
+                  String category,
+                  String rewardType,
+                  Double multiplier,
+                  Boolean active) {
+    this.card = card;
+    this.category = category;
+    this.rewardType = rewardType;
+    this.multiplier = multiplier;
+    this.active = active;
+}
+
     public RewardRule(){
         
     }
