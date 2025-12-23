@@ -32,12 +32,12 @@ public class CreditCardRecord {
 
     public CreditCardRecord() {}
 
-    public CreditCardRecord(Long id, Long userId, String cardName,
+    public CreditCardRecord(Long id, String cardName,
                             String issuer, String cardType,
                             Double annualFee, String status,
                             LocalDateTime createdAt) {
         this.id = id;
-        this.userId = userId;
+       
         this.cardName = cardName;
         this.issuer = issuer;
         this.cardType = cardType;
@@ -53,13 +53,14 @@ public class CreditCardRecord {
         this.id=id;
         }
 
-    public Long getUserId() {
-        return userId;
+    public UserProfile getUser() {
+    return user;
+}
+
+     public void setUser(UserProfile user) {
+       this.user = user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 
     public String getCardName() {
         return cardName;
