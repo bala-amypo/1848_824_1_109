@@ -30,22 +30,26 @@ public class RewardRuleServiceImpl implements RewardRuleService {
         return ruleRepo.save(rule);
     }
 
-    @Override
-    public RewardRule updateRule(Long id, RewardRule updated) {
-        RewardRule existing = ruleRepo.findById(id).orElse(null);
-        if (existing == null) {
-            return null;
-        }
-
-        if (updated.getMultiplier() != null && updated.getMultiplier() > 0) {
-            existing.setMultiplier(updated.getMultiplier());
-        }
-
-        existing.setActive(updated.getActive());
-        existing.setRuleName(updated.getRuleName());
-
-        return ruleRepo.save(existing);
+@Override
+public RewardRule updateRule(Long id, RewardRule updated) {
+    RewardRule existing = ruleRepo.findById(id).orElse(null);
+    if (existing == null) {
+        return null;
     }
+
+    // multiplier validation
+    if (updated.getMultiplier() != null && updated.getMultiplier() > 0) {
+        existing.setMultiplier(updated.getMultiplier());
+    } else {
+        throw new IllegalArgumentException("Multiplier must be greater than 0");
+    }
+
+    existing.setActive(updated.getActive());
+    existing.setCategory(updated.getCategory());
+    existing.setRewardType(updated.getRewardType());
+
+    return ruleRepo.save(existing);
+}
 
     @Override
     public List<RewardRule> getRulesByCard(Long cardId) {
