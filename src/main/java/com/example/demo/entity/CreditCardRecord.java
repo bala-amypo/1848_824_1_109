@@ -1,27 +1,42 @@
 package com.example.demo.entity;
 
 import java.time.LocalDateTime;
-import jakarta.persistence.*;
 import java.util.Set;
+
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 
 @Entity
+@Table(name = "credit_card_record")
 public class CreditCardRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    // 🔹 Must reference a valid user
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
-    private UserProfile userId;
+    private UserProfile user;
+
+    @Column(nullable = false)
     private String cardName;
+
+    @Column(nullable = false)
     private String issuer;
+
     private String cardType;
+
     @Min(0)
+    @Column(nullable = false)
     private Double annualFee;
+
     private String status;
+
+    @Column(updatable = false)
     private LocalDateTime createdAt;
 
+    // 🔹 Many-to-Many (reverse side)
     @ManyToMany(mappedBy = "favouriteCards")
     private Set<UserProfile> favouredByUsers;
 
@@ -32,35 +47,23 @@ public class CreditCardRecord {
 
     public CreditCardRecord() {}
 
-    public CreditCardRecord(Long id, String cardName,
-                            String issuer, String cardType,
-                            Double annualFee, String status,
-                            LocalDateTime createdAt) {
-        this.id = id;
-       
-        this.cardName = cardName;
-        this.issuer = issuer;
-        this.cardType = cardType;
-        this.annualFee = annualFee;
-        this.status = status;
-        this.createdAt = createdAt;
-    }
+    // -------- Getters & Setters --------
 
     public Long getId() {
         return id;
     }
-    public void setId(Long id){
-        this.id=id;
-        }
 
-    public UserProfile getUser() {
-    return user;
-}
-
-     public void setUser(UserProfile user) {
-       this.user = user;
+    public void setId(Long id) {
+        this.id = id;
     }
 
+    public UserProfile getUser() {
+        return user;
+    }
+
+    public void setUser(UserProfile user) {
+        this.user = user;
+    }
 
     public String getCardName() {
         return cardName;
@@ -105,4 +108,25 @@ public class CreditCardRecord {
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
+
+    public Set<UserProfile> getFavouredByUsers() {
+        return favouredByUsers;
+    }
+
+    public CreditCardRecord() {}
+
+    public CreditCardRecord(Long id, String cardName,
+                            String issuer, String cardType,
+                            Double annualFee, String status,
+                            LocalDateTime createdAt) {
+        this.id = id;
+       
+        this.cardName = cardName;
+        this.issuer = issuer;
+        this.cardType = cardType;
+        this.annualFee = annualFee;
+        this.status = status;
+        this.createdAt = createdAt;
+    }
+
 }
