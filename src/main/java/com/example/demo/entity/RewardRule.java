@@ -34,7 +34,7 @@ public class RewardRule {
     @Column(nullable = false)
     private Boolean active;
 
-    public RewardRule() {}
+    
 
     // -------- Getters & Setters --------
 
