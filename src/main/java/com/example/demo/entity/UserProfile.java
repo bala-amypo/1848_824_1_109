@@ -13,14 +13,23 @@ public class UserProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique=true)
     private String userId;
     private String fullName;
+    @Column(unique=true)
     private String email;
     private String password;
     private String role;
     private Boolean active;
     private LocalDateTime createdAt;
 
+    @ManyToMany
+    @JoinTable(
+        name = "user_favourite_cards",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "card_id")
+    )
+    private Set<CreditCardRecord> favouriteCards;
     @PrePersist
     public void onCreate() {
         this.createdAt = LocalDateTime.now();
