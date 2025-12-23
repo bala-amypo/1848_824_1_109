@@ -10,7 +10,7 @@ import com.example.demo.service.CreditCardService;
 
 @RestController
 @RequestMapping("/api/cards")
-public class CreditCardController {
+public class CreditCardRecordController {
 
     @Autowired
     private CreditCardService creditCardService;
