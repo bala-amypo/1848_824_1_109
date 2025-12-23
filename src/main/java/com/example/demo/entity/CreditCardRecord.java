@@ -113,7 +113,7 @@ public class CreditCardRecord {
         return favouredByUsers;
     }
 
-    public CreditCardRecord() {}
+    
 
     public CreditCardRecord(Long id, String cardName,
                             String issuer, String cardType,
