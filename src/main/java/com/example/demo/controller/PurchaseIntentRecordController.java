@@ -10,7 +10,7 @@ import com.example.demo.service.PurchaseIntentService;
 
 @RestController
 @RequestMapping("/purchase-intents")
-public class PurchaseIntentController {
+public class PurchaseIntentRecordController {
 
     @Autowired
     private PurchaseIntentService service;
