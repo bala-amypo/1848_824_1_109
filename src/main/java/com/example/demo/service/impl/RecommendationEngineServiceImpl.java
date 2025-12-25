@@ -46,8 +46,7 @@ public class RecommendationEngineServiceImpl implements RecommendationEngineServ
         rec.setRecommendedCardId(recommendedCardId);
         rec.setExpectedRewardValue(reward);
         rec.setCalculationDetailsJson("{\"rate\":5}");
-        rec.setRecommendedAt(LocalDateTime.now());
-
+        
         return recommendationRepo.save(rec);
     }
 
