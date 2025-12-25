@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.PurchaseIntentRecord;
-import com.example.demo.repository.PurchaseIntentRepository;
+import com.example.demo.repository.PurchaseIntentRecordRepository;
 import com.example.demo.service.PurchaseIntentService;
 
 @Service
 public class PurchaseIntentServiceImpl implements PurchaseIntentService {
 
     @Autowired
-    private PurchaseIntentRepository repository;
+    private PurchaseIntentRecordRepository repository;
 
     @Override
     public PurchaseIntentRecord createIntent(PurchaseIntentRecord intent) {
