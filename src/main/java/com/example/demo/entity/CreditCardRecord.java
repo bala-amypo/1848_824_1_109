@@ -9,12 +9,9 @@ import jakarta.validation.constraints.Min;
 @Entity
 @Table(name = "credit_card_record")
 public class CreditCardRecord {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    // 🔹 Must reference a valid user
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
     private UserProfile user;
@@ -35,19 +32,14 @@ public class CreditCardRecord {
 
     @Column(updatable = false)
     private LocalDateTime createdAt;
-
-    // 🔹 Many-to-Many (reverse side)
     @ManyToMany(mappedBy = "favouriteCards")
     private Set<UserProfile> favouredByUsers;
-
     @PrePersist
     public void onCreate() {
         this.createdAt = LocalDateTime.now();
     }
 
     public CreditCardRecord() {}
-
-    // -------- Getters & Setters --------
 
     public Long getId() {
         return id;
