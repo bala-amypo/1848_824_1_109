@@ -10,7 +10,7 @@ import com.example.demo.service.RecommendationEngineService;
 
 @RestController
 @RequestMapping("/api/recommendations")
-public class RecommendationEngineController {
+public class RecommendationRecordController {
 
     @Autowired
     private RecommendationEngineService recommendationService;
