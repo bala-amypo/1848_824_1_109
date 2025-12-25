@@ -17,17 +17,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserProfileController{
     @Autowired
     UserProfileService ups;
-    @PostMapping("/")
+    @PostMapping
     public UserProfile addUserProfile(@RequestBody UserProfile profile ){
         return ups.createUserProfile(profile);
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
      public UserProfile getId(@PathVariable Long id){
         return ups.getUserById(id);
     }
 
-    @GetMapping("/userid/{userId}")
+    @GetMapping("/lookup/{userId}")
     public UserProfile getUser(@PathVariable String userId){
         return ups.findByUserId(userId);
     }

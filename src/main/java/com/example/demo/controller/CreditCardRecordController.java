@@ -16,7 +16,7 @@ public class CreditCardRecordController {
     private CreditCardService creditCardService;
 
     // ➕ Add new card for a user
-    @PostMapping("/user/{userId}")
+    @PostMapping
     public CreditCardRecord addCard(
             @PathVariable Long userId,
             @RequestBody CreditCardRecord card) {
