@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserProfileController{
     @Autowired
     UserProfileService ups;
-    @PostMapping("/UserProfile")
+    @PostMapping("/")
     public UserProfile addUserProfile(@RequestBody UserProfile profile ){
         return ups.createUserProfile(profile);
     }
