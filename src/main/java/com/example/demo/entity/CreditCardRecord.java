@@ -21,6 +21,7 @@ public class CreditCardRecord {
 
     @Column(nullable = false)
     private String issuer;
+    private Long userId;
 
     private String cardType;
 
@@ -104,6 +105,15 @@ public class CreditCardRecord {
     public Set<UserProfile> getFavouredByUsers() {
         return favouredByUsers;
     }
+
+    public Long getUserId() {
+    return userId;
+}
+
+public void setUserId(Long userId) {
+    this.userId = userId;
+}
+
 
     
 

@@ -19,6 +19,7 @@ public class RewardRule {
     @ManyToOne(optional = false)
     @JoinColumn(name = "card_id")
     private CreditCardRecord card;
+    private Long cardId;
 
     @Column(nullable = false)
     private String category;
@@ -82,7 +83,7 @@ public class RewardRule {
         this.active = active;
     }
 
-    
+
     public Long getCardId() {
     return cardId;
 }
