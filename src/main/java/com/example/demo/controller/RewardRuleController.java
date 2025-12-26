@@ -15,13 +15,11 @@ public class RewardRuleController {
     @Autowired
     private RewardRuleService rewardRuleService;
 
-    // ➕ Create reward rule
     @PostMapping
     public RewardRule createRule(@RequestBody RewardRule rule) {
         return rewardRuleService.createRule(rule);
     }
 
-    // ✏ Update reward rule
     @PutMapping("/{id}")
     public RewardRule updateRule(
             @PathVariable Long id,
@@ -29,19 +27,16 @@ public class RewardRuleController {
         return rewardRuleService.updateRule(id, rule);
     }
 
-    // 💳 Get rules by card
     @GetMapping("/card/{cardId}")
     public List<RewardRule> getRulesByCard(@PathVariable Long cardId) {
         return rewardRuleService.getRulesByCard(cardId);
     }
 
-    // ✅ Get active rules
     @GetMapping("/active")
     public List<RewardRule> getActiveRules() {
         return rewardRuleService.getActiveRules();
     }
 
-    // 📄 Get all rules
     @GetMapping
     public List<RewardRule> getAllRules() {
         return rewardRuleService.getAllRules();

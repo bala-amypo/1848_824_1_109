@@ -15,7 +15,7 @@ public class CreditCardRecordController {
     @Autowired
     private CreditCardService creditCardService;
 
-    // ➕ Add new card for a user
+  
     @PostMapping
     public CreditCardRecord addCard(
             @PathVariable Long userId,
@@ -23,7 +23,7 @@ public class CreditCardRecordController {
         return creditCardService.addCard(userId, card);
     }
 
-    // ✏ Update card
+ 
     @PutMapping("/{id}")
     public CreditCardRecord updateCard(
             @PathVariable Long id,
@@ -31,19 +31,17 @@ public class CreditCardRecordController {
         return creditCardService.updateCard(id, card);
     }
 
-    // 🔍 Get card by ID
+
     @GetMapping("/{id}")
     public CreditCardRecord getCardById(@PathVariable Long id) {
         return creditCardService.getCardById(id);
     }
 
-    // 👤 Get cards by user
     @GetMapping("/user/{userId}")
     public List<CreditCardRecord> getCardsByUser(@PathVariable Long userId) {
         return creditCardService.getCardsByUser(userId);
     }
 
-    // 📄 Get all cards
     @GetMapping
     public List<CreditCardRecord> getAllCards() {
         return creditCardService.getAllCards();

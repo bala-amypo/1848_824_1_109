@@ -21,13 +21,10 @@ public class RecommendationRecord {
     private String calculationDetailsJson;
     private LocalDateTime recommendedAt;
 
-    // ✅ Auto-generate recommendedAt
     @PrePersist
     public void onCreate() {
         this.recommendedAt = LocalDateTime.now();
     }
-
-    // Getters & Setters
     public Long getId() {
         return id;
     }
@@ -80,7 +77,6 @@ public class RecommendationRecord {
         return recommendedAt;
     }
 
-    // Constructors
     public RecommendationRecord() {
     }
 
