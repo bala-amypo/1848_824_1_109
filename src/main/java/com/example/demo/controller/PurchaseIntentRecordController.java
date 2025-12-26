@@ -12,8 +12,11 @@ import com.example.demo.service.PurchaseIntentService;
 @RequestMapping("/purchase-intents")
 public class PurchaseIntentRecordController {
 
-    @Autowired
-    private PurchaseIntentService service;
+    private final PurchaseIntentService service;
+
+    public PurchaseIntentController(PurchaseIntentService service) {
+        this.service = service;
+    }
 
   
     @PostMapping

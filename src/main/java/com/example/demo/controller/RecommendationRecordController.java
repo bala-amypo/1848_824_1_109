@@ -12,8 +12,12 @@ import com.example.demo.service.RecommendationEngineService;
 @RequestMapping("/api/recommendations")
 public class RecommendationRecordController {
 
-    @Autowired
-    private RecommendationEngineService recommendationService;
+       private final RecommendationEngineService recommendationService;
+
+    public RecommendationController(RecommendationEngineService service) {
+        this.service = service;
+    }
+
 
    
     @PostMapping("/generate/{intentId}")
