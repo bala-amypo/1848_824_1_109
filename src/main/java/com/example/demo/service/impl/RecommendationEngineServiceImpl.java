@@ -38,50 +38,90 @@ public class RecommendationEngineServiceImpl
         this.recommendationRecordRepository = recommendationRecordRepository;
     }
 
-    @Override
-    public RecommendationRecord generateRecommendation(Long intentId) {
+    // @Override
+    // public RecommendationRecord generateRecommendation(Long intentId) {
 
-        PurchaseIntentRecord intent =
-                purchaseIntentRepository.findById(intentId).orElse(null);
+    //     PurchaseIntentRecord intent =
+    //             purchaseIntentRepository.findById(intentId).orElse(null);
 
-        if (intent == null) {
-            throw new BadRequestException("Invalid intent");
-        }
+    //     if (intent == null) {
+    //         throw new BadRequestException("Invalid intent");
+    //     }
 
-        // 1️⃣ Fetch active cards for user
-        List<CreditCardRecord> cards =
-                creditCardRepository.findActiveCardsByUser(
-                        intent.getUserId());
+    //     // 1️⃣ Fetch active cards for user
+    //     List<CreditCardRecord> cards =
+    //             creditCardRepository.findActiveCardsByUser(
+    //                     intent.getUserId());
 
-        if (cards.isEmpty()) {
-            throw new BadRequestException("No active cards");
-        }
+    //     if (cards.isEmpty()) {
+    //         throw new BadRequestException("No active cards");
+    //     }
 
-        CreditCardRecord bestCard = cards.get(0);
-        double bestReward = 0.0;
+    //     CreditCardRecord bestCard = cards.get(0);
+    //     double bestReward = 0.0;
 
-        // 2️⃣ Apply active reward rules
+    //     // 2️⃣ Apply active reward rules
+    //     List<RewardRule> rules =
+    //             rewardRuleRepository.findByActiveTrue();
+
+    //     for (RewardRule rule : rules) {
+    //         if (rule.getCardId().equals(bestCard.getId())) {
+    //             bestReward =
+    //                     intent.getAmount() * rule.getMultiplier();
+    //             break;
+    //         }
+    //     }
+
+    //     // 3️⃣ Save recommendation
+    //     RecommendationRecord rec = new RecommendationRecord();
+    //     rec.setUserId(intent.getUserId());
+    //     rec.setPurchaseIntentId(intentId);
+    //     rec.setRecommendedCardId(bestCard.getId());
+    //     rec.setExpectedRewardValue(bestReward);
+    //     rec.setCalculationDetailsJson("{\"multiplier\":" + bestReward + "}");
+
+    //     return recommendationRecordRepository.save(rec);
+    // }
+
+@Override
+public RecommendationRecord generateRecommendation(Long intentId) {
+
+    PurchaseIntentRecord intent =
+            purchaseIntentRepository.findById(intentId).orElse(null);
+
+    if (intent == null) return null;
+
+    List<CreditCardRecord> cards =
+            creditCardRepository.findActiveCardsByUser(intent.getUserId());
+
+    double bestReward = -1;
+    Long bestCardId = null;
+
+    for (CreditCardRecord card : cards) {
         List<RewardRule> rules =
-                rewardRuleRepository.findByActiveTrue();
+                rewardRuleRepository.findActiveRulesForCardCategory(
+                        card.getId(),
+                        intent.getCategory()
+                );
 
         for (RewardRule rule : rules) {
-            if (rule.getCardId().equals(bestCard.getId())) {
-                bestReward =
-                        intent.getAmount() * rule.getMultiplier();
-                break;
+            double reward = intent.getAmount() * rule.getMultiplier();
+            if (reward > bestReward) {
+                bestReward = reward;
+                bestCardId = card.getId();
             }
         }
-
-        // 3️⃣ Save recommendation
-        RecommendationRecord rec = new RecommendationRecord();
-        rec.setUserId(intent.getUserId());
-        rec.setPurchaseIntentId(intentId);
-        rec.setRecommendedCardId(bestCard.getId());
-        rec.setExpectedRewardValue(bestReward);
-        rec.setCalculationDetailsJson("{\"multiplier\":" + bestReward + "}");
-
-        return recommendationRecordRepository.save(rec);
     }
+
+    RecommendationRecord rec = new RecommendationRecord();
+    rec.setUserId(intent.getUserId());
+    rec.setPurchaseIntentId(intentId);
+    rec.setRecommendedCardId(bestCardId);
+    rec.setExpectedRewardValue(bestReward);
+    rec.setCalculationDetailsJson("{\"reward\":" + bestReward + "}");
+
+    return recommendationRecordRepository.save(rec);
+}
 
     @Override
     public RecommendationRecord getRecommendationById(Long id) {
