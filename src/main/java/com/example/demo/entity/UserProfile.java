@@ -42,6 +42,14 @@ public class UserProfile {
         // if (this.active == null) {
         //     this.active = true;
         // }
+            if (this.role == null || this.role.isBlank()) {
+        this.role = "USER";
+    }
+
+    // optional but safe
+    if (this.active == null) {
+        this.active = true;
+    }
     }
     public Long getId() {
         return id;
