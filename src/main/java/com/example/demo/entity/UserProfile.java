@@ -38,9 +38,9 @@ public class UserProfile {
     @PrePersist
     public void onCreate() {
         this.createdAt = LocalDateTime.now();
-        if (this.active == null) {
-            this.active = true;
-        }
+        // if (this.active == null) {
+        //     this.active = true;
+        // }
     }
     public Long getId() {
         return id;

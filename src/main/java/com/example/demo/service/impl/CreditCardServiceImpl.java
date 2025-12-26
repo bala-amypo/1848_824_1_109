@@ -16,11 +16,12 @@ public class CreditCardServiceImpl implements CreditCardService {
         this.creditCardRepository = creditCardRepository;
     }
 
-    @Override
-    public CreditCardRecord addCard(Long userId,CreditCardRecord card) {
-        card.setUserId(userId);
-        return creditCardRepository.save(card);
-    }
+ @Override
+public CreditCardRecord addCard(Long userId, CreditCardRecord card) {
+    card.setUserId(userId);
+    return creditCardRepository.save(card);
+}
+
 
     @Override
     public CreditCardRecord updateCard(Long id, CreditCardRecord updated) {
