@@ -41,17 +41,3 @@ public class RecommendationController {
         return recommendationService.getAllRecommendations();
     }
 }
-
-// package com.example.demo.controller;
-
-// import com.example.demo.service.RecommendationEngineService;
-
-// public class RecommendationRecordController {
-
-//     private final RecommendationEngineService service;
-
-//     public RecommendationRecordController(RecommendationEngineService service) {
-//         this.service = service;
-//     }
-// }
-

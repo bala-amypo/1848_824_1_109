@@ -14,7 +14,6 @@ public class CreditCardController {
 
    private final CreditCardService creditCardService;
 
-    // ✅ REQUIRED by automated tests
     public CreditCardController(CreditCardService creditCardService) {
         this.creditCardService = creditCardService;
     }
@@ -52,17 +51,3 @@ public class CreditCardController {
         return creditCardService.getAllCards();
     }
 }
-
-// package com.example.demo.controller;
-
-// import com.example.demo.service.CreditCardService;
-
-// public class CreditCardRecordController {
-
-//     private final CreditCardService service;
-
-//     public CreditCardRecordController(CreditCardService service) {
-//         this.service = service;
-//     }
-// }
-

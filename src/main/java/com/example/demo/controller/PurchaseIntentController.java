@@ -45,16 +45,3 @@ public class PurchaseIntentController {
     }
 }
 
-
-// package com.example.demo.controller;
-
-// import com.example.demo.service.PurchaseIntentService;
-
-// public class PurchaseIntentRecordController {
-
-//     private final PurchaseIntentService service;
-
-//     public PurchaseIntentRecordController(PurchaseIntentService service) {
-//         this.service = service;
-//     }
-// }
