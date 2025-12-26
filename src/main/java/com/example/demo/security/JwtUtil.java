@@ -171,14 +171,26 @@ public class JwtUtil {
         return value == null ? null : Long.valueOf(value.toString());
     }
 
+    // public boolean validateToken(String token) {
+    //     try {
+    //         extractAllClaims(token);
+    //         return true;
+    //     } catch (Exception e) {
+    //         return false;
+    //     }
+    // }
+
     public boolean validateToken(String token) {
-        try {
-            extractAllClaims(token);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    try {
+        Jwts.parser()
+            .setSigningKey(secret)
+            .parseClaimsJws(token);
+        return true;
+    } catch (Exception e) {
+        return false; // ✅ DO NOT THROW
     }
+}
+
 
     private Claims extractAllClaims(String token) {
         return Jwts.parser()

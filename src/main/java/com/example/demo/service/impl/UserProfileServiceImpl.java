@@ -31,19 +31,36 @@ public class UserProfileServiceImpl implements UserProfileService {
     //     return userProfileRepository.save(profile);
     // }
 
-    @Override
+//     @Override
+// public UserProfile createUser(UserProfile profile) {
+
+//     if (profile.getRole() == null) {
+//         profile.setRole("USER"); // ✅ DEFAULT ROLE
+//     }
+
+//     if (profile.getPassword() != null) {
+//         profile.setPassword(passwordEncoder.encode(profile.getPassword()));
+//     }
+
+//     return userProfileRepository.save(profile);
+// }
+
+@Override
 public UserProfile createUser(UserProfile profile) {
 
-    if (profile.getRole() == null) {
-        profile.setRole("USER"); // ✅ DEFAULT ROLE
+    // ✅ DEFAULT ROLE
+    if (profile.getRole() == null || profile.getRole().isBlank()) {
+        profile.setRole("USER");
     }
 
-    if (profile.getPassword() != null) {
-        profile.setPassword(passwordEncoder.encode(profile.getPassword()));
+    // ✅ DEFAULT ACTIVE
+    if (profile.getActive() == null) {
+        profile.setActive(true);
     }
 
-    return userProfileRepository.save(profile);
+    return upr.save(profile);
 }
+
 
 
     @Override
