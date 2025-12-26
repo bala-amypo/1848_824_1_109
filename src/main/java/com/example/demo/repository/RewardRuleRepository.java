@@ -15,5 +15,5 @@ public interface RewardRuleRepository extends JpaRepository<RewardRule,Long>{
         AND r.active = true
     """)
     List<RewardRule> findActiveRulesForCardCategory(
-            Long cardId, String category); // ✅ REQUIRED
+            Long cardId, String category);
 }

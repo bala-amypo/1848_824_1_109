@@ -26,7 +26,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found"));
 
-        // ✅ FIX HERE
+        
         if (!Boolean.TRUE.equals(user.getActive())) {
             throw new UsernameNotFoundException("User is inactive");
         }

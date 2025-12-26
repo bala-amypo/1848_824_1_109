@@ -281,13 +281,12 @@ public class JwtUtil {
     private final Key key;
     private final long expirationMs;
 
-    // ✅ REQUIRED constructor (tests expect this)
+   
     public JwtUtil(byte[] secret, long expirationMs) {
         this.key = Keys.hmacShaKeyFor(secret);
         this.expirationMs = expirationMs;
     }
 
-    // ✅ t49
     public String generateToken(Long userId, String email, String role) {
         return Jwts.builder()
                 .setSubject(email)
@@ -299,7 +298,7 @@ public class JwtUtil {
                 .compact();
     }
 
-    // ✅ t50
+   
     public String extractEmail(String token) {
         return extractAllClaims(token).getSubject();
     }
