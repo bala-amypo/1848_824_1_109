@@ -10,8 +10,9 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/simple-status")
 public class SimpleStatusServlet extends HttpServlet {
 
+    // 🚨 MUST BE PUBLIC (test calls it directly)
     @Override
-    protected void doGet(
+    public void doGet(
             HttpServletRequest request,
             HttpServletResponse response) throws IOException {
 
