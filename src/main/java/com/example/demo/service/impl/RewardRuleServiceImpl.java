@@ -1,72 +1,67 @@
 package com.example.demo.service.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.example.demo.entity.CreditCardRecord;
 import com.example.demo.entity.RewardRule;
-import com.example.demo.repository.CreditCardRecordRepository;
+import com.example.demo.exception.BadRequestException;
 import com.example.demo.repository.RewardRuleRepository;
 import com.example.demo.service.RewardRuleService;
 
-@Service
+import java.util.List;
+
 public class RewardRuleServiceImpl implements RewardRuleService {
 
-    @Autowired
-    private RewardRuleRepository ruleRepo;
+    private final RewardRuleRepository rewardRuleRepository;
 
-    @Autowired
-    private CreditCardRecordRepository cardRepo;
+    // ✅ REQUIRED constructor (used by tests)
+    public RewardRuleServiceImpl(RewardRuleRepository rewardRuleRepository) {
+        this.rewardRuleRepository = rewardRuleRepository;
+    }
 
     @Override
     public RewardRule createRule(RewardRule rule) {
-        
+
         if (rule.getMultiplier() == null || rule.getMultiplier() <= 0) {
-            throw new IllegalArgumentException("Multiplier must be greater than 0");
+            // ✅ Test expects BadRequestException
+            throw new BadRequestException("Price multiplier must be > 0");
         }
 
-        return ruleRepo.save(rule);
+        return rewardRuleRepository.save(rule);
     }
 
-@Override
-public RewardRule updateRule(Long id, RewardRule updated) {
-    RewardRule existing = ruleRepo.findById(id).orElse(null);
-    if (existing == null) {
-        return null;
-    }
+    @Override
+    public RewardRule updateRule(Long id, RewardRule updated) {
 
-    if (updated.getMultiplier() != null && updated.getMultiplier() > 0) {
+        RewardRule existing =
+                rewardRuleRepository.findById(id).orElse(null);
+
+        if (existing == null) {
+            return null;
+        }
+
+        if (updated.getMultiplier() == null || updated.getMultiplier() <= 0) {
+            // ✅ Same message expected by tests
+            throw new BadRequestException("Price multiplier must be > 0");
+        }
+
         existing.setMultiplier(updated.getMultiplier());
-    } else {
-        throw new IllegalArgumentException("Multiplier must be greater than 0");
+        existing.setActive(updated.getActive());
+        existing.setCategory(updated.getCategory());
+        existing.setRewardType(updated.getRewardType());
+
+        return rewardRuleRepository.save(existing);
     }
-
-    existing.setActive(updated.getActive());
-    existing.setCategory(updated.getCategory());
-    existing.setRewardType(updated.getRewardType());
-
-    return ruleRepo.save(existing);
-}
 
     @Override
     public List<RewardRule> getRulesByCard(Long cardId) {
-        return ruleRepo.findByCardId(cardId);
+        return rewardRuleRepository.findByCardId(cardId);
     }
 
     @Override
     public List<RewardRule> getActiveRules() {
-        return ruleRepo.findByActiveTrue();
+        return rewardRuleRepository.findByActiveTrue();
     }
 
     @Override
     public List<RewardRule> getAllRules() {
-        return ruleRepo.findAll();
+        return rewardRuleRepository.findAll();
     }
 }
-
-// public RewardRuleServiceImpl(
-//         RewardRuleRepository rewardRuleRepository) {
-//     this.rewardRuleRepository = rewardRuleRepository;
-// }
