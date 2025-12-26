@@ -20,7 +20,7 @@ public class PurchaseIntentRecordController {
 
   
     @PostMapping
-    public PurchaseIntentRecord createIntent(
+    public PurchaseIntentRecordController createIntent(
             @RequestBody PurchaseIntentRecord intent) {
         return service.createIntent(intent);
     }

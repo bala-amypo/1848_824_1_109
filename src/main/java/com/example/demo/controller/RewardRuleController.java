@@ -12,8 +12,11 @@ import com.example.demo.service.RewardRuleService;
 @RequestMapping("/api/reward-rules")
 public class RewardRuleController {
 
-    @Autowired
-    private RewardRuleService rewardRuleService;
+    private final RewardRuleService rewardRuleService;
+
+    public RewardRuleController(RewardRuleService rewardRuleService) {
+        this.rewardRuleService = rewardRuleService;
+    }
 
     @PostMapping
     public RewardRule createRule(@RequestBody RewardRule rule) {

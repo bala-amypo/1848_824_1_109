@@ -15,7 +15,7 @@ public class CreditCardRecordController {
    private final CreditCardService creditCardService;
 
     // ✅ REQUIRED by automated tests
-    public CreditCardController(CreditCardService creditCardService) {
+    public CreditCardRecordController(CreditCardService creditCardService) {
         this.creditCardService = creditCardService;
     }
 
