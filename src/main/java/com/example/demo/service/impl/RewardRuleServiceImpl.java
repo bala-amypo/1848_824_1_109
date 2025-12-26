@@ -11,7 +11,7 @@ public class RewardRuleServiceImpl implements RewardRuleService {
 
     private final RewardRuleRepository rewardRuleRepository;
 
-    // ✅ REQUIRED constructor (used by tests)
+   
     public RewardRuleServiceImpl(RewardRuleRepository rewardRuleRepository) {
         this.rewardRuleRepository = rewardRuleRepository;
     }
@@ -20,7 +20,7 @@ public class RewardRuleServiceImpl implements RewardRuleService {
     public RewardRule createRule(RewardRule rule) {
 
         if (rule.getMultiplier() == null || rule.getMultiplier() <= 0) {
-            // ✅ Test expects BadRequestException
+            
             throw new BadRequestException("Price multiplier must be > 0");
         }
 
@@ -38,7 +38,7 @@ public class RewardRuleServiceImpl implements RewardRuleService {
         }
 
         if (updated.getMultiplier() == null || updated.getMultiplier() <= 0) {
-            // ✅ Same message expected by tests
+           
             throw new BadRequestException("Price multiplier must be > 0");
         }
 

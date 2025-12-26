@@ -38,109 +38,7 @@ public class RecommendationEngineServiceImpl
         this.recommendationRecordRepository = recommendationRecordRepository;
     }
 
-    // @Override
-    // public RecommendationRecord generateRecommendation(Long intentId) {
-
-    //     PurchaseIntentRecord intent =
-    //             purchaseIntentRepository.findById(intentId).orElse(null);
-
-    //     if (intent == null) {
-    //         throw new BadRequestException("Invalid intent");
-    //     }
-
-    //     // 1️⃣ Fetch active cards for user
-    //     List<CreditCardRecord> cards =
-    //             creditCardRepository.findActiveCardsByUser(
-    //                     intent.getUserId());
-
-    //     if (cards.isEmpty()) {
-    //         throw new BadRequestException("No active cards");
-    //     }
-
-    //     CreditCardRecord bestCard = cards.get(0);
-    //     double bestReward = 0.0;
-
-    //     // 2️⃣ Apply active reward rules
-    //     List<RewardRule> rules =
-    //             rewardRuleRepository.findByActiveTrue();
-
-    //     for (RewardRule rule : rules) {
-    //         if (rule.getCardId().equals(bestCard.getId())) {
-    //             bestReward =
-    //                     intent.getAmount() * rule.getMultiplier();
-    //             break;
-    //         }
-    //     }
-
-    //     // 3️⃣ Save recommendation
-    //     RecommendationRecord rec = new RecommendationRecord();
-    //     rec.setUserId(intent.getUserId());
-    //     rec.setPurchaseIntentId(intentId);
-    //     rec.setRecommendedCardId(bestCard.getId());
-    //     rec.setExpectedRewardValue(bestReward);
-    //     rec.setCalculationDetailsJson("{\"multiplier\":" + bestReward + "}");
-
-    //     return recommendationRecordRepository.save(rec);
-    // }
-
-
-
-// @Override
-// public RecommendationRecord generateRecommendation(Long intentId) {
-
-//     // 1️⃣ Fetch intent
-//     PurchaseIntentRecord intent =
-//             purchaseIntentRepository.findById(intentId).orElse(null);
-
-//     // ❌ If intent not found → return null (tests expect this)
-//     if (intent == null) {
-//         return null;
-//     }
-
-//     // 2️⃣ Fetch active cards for user
-//     List<CreditCardRecord> cards =
-//             creditCardRepository.findActiveCardsByUser(intent.getUserId());
-
-//     // ❗ IMPORTANT: If NO cards → THROW exception (test expects throw)
-//     if (cards == null || cards.isEmpty()) {
-//         throw new IllegalStateException("No active cards found for user");
-//     }
-
-//     double bestReward = -1;
-//     Long bestCardId = null;
-
-//     // 3️⃣ Evaluate rules for each card
-//     for (CreditCardRecord card : cards) {
-
-//         List<RewardRule> rules =
-//                 rewardRuleRepository.findActiveRulesForCardCategory(
-//                         card.getId(),
-//                         intent.getCategory()
-//                 );
-
-//         if (rules == null) continue;
-
-//         for (RewardRule rule : rules) {
-//             double reward = intent.getAmount() * rule.getMultiplier();
-//             if (reward > bestReward) {
-//                 bestReward = reward;
-//                 bestCardId = card.getId();
-//             }
-//         }
-//     }
-
-//     // 4️⃣ Build recommendation
-//     RecommendationRecord rec = new RecommendationRecord();
-//     rec.setUserId(intent.getUserId());
-//     rec.setPurchaseIntentId(intentId);
-//     rec.setRecommendedCardId(bestCardId);
-//     rec.setExpectedRewardValue(bestReward);
-//     rec.setCalculationDetailsJson("{\"reward\":" + bestReward + "}");
-
-//     // 5️⃣ Save & return
-//     return recommendationRecordRepository.save(rec);
-// }
-
+    
 @Override
 public RecommendationRecord generateRecommendation(Long intentId) {
 
@@ -154,7 +52,7 @@ public RecommendationRecord generateRecommendation(Long intentId) {
     List<CreditCardRecord> cards =
             creditCardRepository.findActiveCardsByUser(intent.getUserId());
 
-    // ✅ MUST THROW RuntimeException
+   
     if (cards == null || cards.isEmpty()) {
         throw new BadRequestException("No active cards found");
 

@@ -10,7 +10,7 @@ public class PurchaseIntentServiceImpl implements PurchaseIntentService {
 
     private final PurchaseIntentRecordRepository purchaseIntentRepository;
 
-    // ✅ REQUIRED constructor (used by tests)
+    
     public PurchaseIntentServiceImpl(
             PurchaseIntentRecordRepository purchaseIntentRepository) {
         this.purchaseIntentRepository = purchaseIntentRepository;

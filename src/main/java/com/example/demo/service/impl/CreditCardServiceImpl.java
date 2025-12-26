@@ -10,7 +10,7 @@ public class CreditCardServiceImpl implements CreditCardService {
 
     private final CreditCardRecordRepository creditCardRepository;
 
-    // ✅ REQUIRED constructor (used by tests)
+    
     public CreditCardServiceImpl(
             CreditCardRecordRepository creditCardRepository) {
         this.creditCardRepository = creditCardRepository;
@@ -24,7 +24,7 @@ public CreditCardRecord addCard(Long userId, CreditCardRecord card) {
 
 @Override
 public CreditCardRecord addCard(CreditCardRecord card) {
-    // test version (userId already set)
+   
     return creditCardRepository.save(card);
 }
 

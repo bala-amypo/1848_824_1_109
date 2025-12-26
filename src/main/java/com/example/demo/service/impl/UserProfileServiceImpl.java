@@ -12,7 +12,6 @@ public class UserProfileServiceImpl implements UserProfileService {
     private final UserProfileRepository userProfileRepository;
     private final PasswordEncoder passwordEncoder;
 
-    // ✅ REQUIRED constructor (USED BY TESTS)
     public UserProfileServiceImpl(
             UserProfileRepository userProfileRepository,
             PasswordEncoder passwordEncoder) {
@@ -21,39 +20,16 @@ public class UserProfileServiceImpl implements UserProfileService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // @Override
-    // public UserProfile createUser(UserProfile profile) {
-    //     // Test expects password to be encoded
-    //     if (profile.getPassword() != null) {
-    //         profile.setPassword(
-    //                 passwordEncoder.encode(profile.getPassword()));
-    //     }
-    //     return userProfileRepository.save(profile);
-    // }
-
-//     @Override
-// public UserProfile createUser(UserProfile profile) {
-
-//     if (profile.getRole() == null) {
-//         profile.setRole("USER"); // ✅ DEFAULT ROLE
-//     }
-
-//     if (profile.getPassword() != null) {
-//         profile.setPassword(passwordEncoder.encode(profile.getPassword()));
-//     }
-
-//     return userProfileRepository.save(profile);
-// }
 
 @Override
 public UserProfile createUser(UserProfile profile) {
 
-    // ✅ DEFAULT ROLE
+    
     if (profile.getRole() == null || profile.getRole().isBlank()) {
         profile.setRole("USER");
     }
 
-    // ✅ DEFAULT ACTIVE
+
     if (profile.getActive() == null) {
         profile.setActive(true);
     }
