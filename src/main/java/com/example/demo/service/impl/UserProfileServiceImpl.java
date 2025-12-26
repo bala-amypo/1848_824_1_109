@@ -58,7 +58,7 @@ public UserProfile createUser(UserProfile profile) {
         profile.setActive(true);
     }
 
-    return upr.save(profile);
+    return userProfileRepository.save(profile);
 }
 
 

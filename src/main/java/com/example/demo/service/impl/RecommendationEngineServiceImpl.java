@@ -127,7 +127,7 @@ public class RecommendationEngineServiceImpl
 public RecommendationRecord generateRecommendation(Long intentId) {
 
     PurchaseIntentRecord intent =
-            purchaseIntentRepo.findById(intentId).orElse(null);
+            purchaseIntentRepository.findById(intentId).orElse(null);
 
     if (intent == null) {
         throw new IllegalArgumentException("Invalid intent");
