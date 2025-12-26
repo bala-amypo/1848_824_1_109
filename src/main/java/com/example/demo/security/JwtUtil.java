@@ -119,7 +119,6 @@
 //                 .getBody();
 //     }
 // }
-
 package com.example.demo.security;
 
 import io.jsonwebtoken.Claims;
@@ -133,13 +132,20 @@ public class JwtUtil {
     private final String secret;
     private final long expirationMs;
 
-    // ✅ REQUIRED constructor (tests expect this)
+    // ✅ CONSTRUCTOR USED BY TESTS (byte[])
+    public JwtUtil(byte[] secret, long expirationMs) {
+        this.secret = new String(secret); // convert safely
+        this.expirationMs = expirationMs;
+    }
+
+    // ✅ CONSTRUCTOR USED BY SPRING CONFIG
     public JwtUtil(String secret, long expirationMs) {
         this.secret = secret;
         this.expirationMs = expirationMs;
     }
 
-    // ✅ REQUIRED BY TESTS
+    // ================= JWT LOGIC =================
+
     public String generateToken(Long userId, String email, String role) {
 
         return Jwts.builder()
@@ -181,4 +187,3 @@ public class JwtUtil {
                 .getBody();
     }
 }
-
