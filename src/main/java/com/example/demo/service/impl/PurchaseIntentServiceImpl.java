@@ -12,11 +12,8 @@ import com.example.demo.service.PurchaseIntentService;
 @Service
 public class PurchaseIntentServiceImpl implements PurchaseIntentService {
 
-public PurchaseIntentServiceImpl(
-        PurchaseIntentRecordRepository repository) {
-    this. repository =  repository;
-}
-
+    @Autowired
+    private PurchaseIntentRecordRepository repository;
 
     @Override
     public PurchaseIntentRecord createIntent(PurchaseIntentRecord intent) {

@@ -14,7 +14,8 @@ import com.example.demo.service.CreditCardService;
 @Service
 public class CreditCardServiceImpl implements CreditCardService {
 
-    
+    @Autowired
+    private CreditCardRecordRepository cardRepo;
 
     @Autowired
     private UserProfileRepository userRepo;
