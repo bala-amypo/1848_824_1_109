@@ -25,6 +25,7 @@ public class RecommendationRecord {
     public void onCreate() {
         this.recommendedAt = LocalDateTime.now();
     }
+    
     public Long getId() {
         return id;
     }
