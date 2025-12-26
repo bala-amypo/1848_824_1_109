@@ -83,26 +83,80 @@ public class RecommendationEngineServiceImpl
     //     return recommendationRecordRepository.save(rec);
     // }
 
+// @Override
+// public RecommendationRecord generateRecommendation(Long intentId) {
+
+//     PurchaseIntentRecord intent =
+//             purchaseIntentRepository.findById(intentId).orElse(null);
+
+//     if (intent == null) return null;
+
+//     List<CreditCardRecord> cards =
+//             creditCardRepository.findActiveCardsByUser(intent.getUserId());
+
+//     double bestReward = -1;
+//     Long bestCardId = null;
+
+//     for (CreditCardRecord card : cards) {
+//         List<RewardRule> rules =
+//                 rewardRuleRepository.findActiveRulesForCardCategory(
+//                         card.getId(),
+//                         intent.getCategory()
+//                 );
+
+//         for (RewardRule rule : rules) {
+//             double reward = intent.getAmount() * rule.getMultiplier();
+//             if (reward > bestReward) {
+//                 bestReward = reward;
+//                 bestCardId = card.getId();
+//             }
+//         }
+//     }
+
+//     RecommendationRecord rec = new RecommendationRecord();
+//     rec.setUserId(intent.getUserId());
+//     rec.setPurchaseIntentId(intentId);
+//     rec.setRecommendedCardId(bestCardId);
+//     rec.setExpectedRewardValue(bestReward);
+//     rec.setCalculationDetailsJson("{\"reward\":" + bestReward + "}");
+
+//     return recommendationRecordRepository.save(rec);
+// }
+
 @Override
 public RecommendationRecord generateRecommendation(Long intentId) {
 
+    // 1️⃣ Fetch intent
     PurchaseIntentRecord intent =
             purchaseIntentRepository.findById(intentId).orElse(null);
 
-    if (intent == null) return null;
+    // ❌ If intent not found → return null (tests expect this)
+    if (intent == null) {
+        return null;
+    }
 
+    // 2️⃣ Fetch active cards for user
     List<CreditCardRecord> cards =
             creditCardRepository.findActiveCardsByUser(intent.getUserId());
+
+    // ❗ IMPORTANT: If NO cards → THROW exception (test expects throw)
+    if (cards == null || cards.isEmpty()) {
+        throw new IllegalStateException("No active cards found for user");
+    }
 
     double bestReward = -1;
     Long bestCardId = null;
 
+    // 3️⃣ Evaluate rules for each card
     for (CreditCardRecord card : cards) {
+
         List<RewardRule> rules =
                 rewardRuleRepository.findActiveRulesForCardCategory(
                         card.getId(),
                         intent.getCategory()
                 );
+
+        if (rules == null) continue;
 
         for (RewardRule rule : rules) {
             double reward = intent.getAmount() * rule.getMultiplier();
@@ -113,6 +167,7 @@ public RecommendationRecord generateRecommendation(Long intentId) {
         }
     }
 
+    // 4️⃣ Build recommendation
     RecommendationRecord rec = new RecommendationRecord();
     rec.setUserId(intent.getUserId());
     rec.setPurchaseIntentId(intentId);
@@ -120,6 +175,7 @@ public RecommendationRecord generateRecommendation(Long intentId) {
     rec.setExpectedRewardValue(bestReward);
     rec.setCalculationDetailsJson("{\"reward\":" + bestReward + "}");
 
+    // 5️⃣ Save & return
     return recommendationRecordRepository.save(rec);
 }
 
