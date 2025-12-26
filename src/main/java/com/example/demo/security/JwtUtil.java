@@ -58,64 +58,66 @@
 // }
 
 
-package com.example.demo.security;
+// package com.example.demo.security;
 
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
+// import io.jsonwebtoken.*;
+// import io.jsonwebtoken.security.Keys;
 
-import java.security.Key;
-import java.util.Date;
+// import java.security.Key;
+// import java.util.Date;
 
-public class JwtUtil {
+// public class JwtUtil {
 
-    private final Key key;
-    private final long expirationMs;
+//     private final Key key;
+//     private final long expirationMs;
 
-    // ✅ REQUIRED constructor
-    public JwtUtil(byte[] secret, long expirationMs) {
-        this.key = Keys.hmacShaKeyFor(secret);
-        this.expirationMs = expirationMs;
-    }
+//     // ✅ REQUIRED constructor
+//     public JwtUtil(byte[] secret, long expirationMs) {
+//         this.key = Keys.hmacShaKeyFor(secret);
+//         this.expirationMs = expirationMs;
+//     }
 
-    // ✅ REQUIRED by tests
-    public String generateToken(Long userId, String email, String role) {
+//     // ✅ REQUIRED by tests
+//     public String generateToken(Long userId, String email, String role) {
 
-        return Jwts.builder()
-                .setSubject(email)
-                .claim("userId", userId)
-                .claim("role", role)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expirationMs))
-                .signWith(key, SignatureAlgorithm.HS256)
-                .compact();
-    }
+//         return Jwts.builder()
+//                 .setSubject(email)
+//                 .claim("userId", userId)
+//                 .claim("role", role)
+//                 .setIssuedAt(new Date())
+//                 .setExpiration(new Date(System.currentTimeMillis() + expirationMs))
+//                 .signWith(key, SignatureAlgorithm.HS256)
+//                 .compact();
+//     }
 
-    public String extractEmail(String token) {
-        return extractAllClaims(token).getSubject();
-    }
+//     public String extractEmail(String token) {
+//         return extractAllClaims(token).getSubject();
+//     }
 
-    public String extractRole(String token) {
-        return extractAllClaims(token).get("role", String.class);
-    }
+//     public String extractRole(String token) {
+//         return extractAllClaims(token).get("role", String.class);
+//     }
 
-    public Long extractUserId(String token) {
-        return extractAllClaims(token).get("userId", Long.class);
-    }
+//     public Long extractUserId(String token) {
+//         return extractAllClaims(token).get("userId", Long.class);
+//     }
 
-    public boolean validateToken(String token) {
-        try {
-            extractAllClaims(token);
-            return true;
-        } catch (JwtException e) {
-            return false;
-        }
-    }
+//     public boolean validateToken(String token) {
+//         try {
+//             extractAllClaims(token);
+//             return true;
+//         } catch (JwtException e) {
+//             return false;
+//         }
+//     }
 
-    private Claims extractAllClaims(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(key)
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
-    }
-}
+//     private Claims extractAllClaims(String token) {
+//         return Jwts.parserBuilder()
+//                 .setSigningKey(key)
+//                 .build()
+//                 .parseClaimsJws(token)
+//                 .getBody();
+//     }
+// }
+
+
