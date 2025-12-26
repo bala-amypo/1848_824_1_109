@@ -10,28 +10,17 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/simple-status")
 public class SimpleStatusServlet extends HttpServlet {
 
-    // 🚨 MUST BE PUBLIC (test calls it directly)
-    // @Override
-    // public void doGet(
-    //         HttpServletRequest request,
-    //         HttpServletResponse response) throws IOException {
-
-    //     response.setStatus(HttpServletResponse.SC_OK);
-    //     response.getWriter()
-    //             .write("Credit Card Reward Maximizer is running");
-    // }
 
     @Override
 public void doGet(HttpServletRequest request,
                   HttpServletResponse response) throws IOException {
 
     response.setStatus(HttpServletResponse.SC_OK);
-    response.setContentType("text/plain"); // ✅ REQUIRED
-
+    response.setContentType("text/plain");
     response.getWriter()
             .write("Credit Card Reward Maximizer is running");
 
-    response.getWriter().flush(); // ✅ REQUIRED
+    response.getWriter().flush();
 }
 
 }
