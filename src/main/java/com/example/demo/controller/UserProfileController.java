@@ -19,7 +19,7 @@ public class UserProfileController{
     UserProfileService ups;
     @PostMapping
     public UserProfile addUserProfile(@RequestBody UserProfile profile ){
-        return ups.createUserProfile(profile);
+        return ups.createUser(profile);
     }
 
     @GetMapping("/{id}")
