@@ -21,15 +21,30 @@ public class UserProfileServiceImpl implements UserProfileService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    // @Override
+    // public UserProfile createUser(UserProfile profile) {
+    //     // Test expects password to be encoded
+    //     if (profile.getPassword() != null) {
+    //         profile.setPassword(
+    //                 passwordEncoder.encode(profile.getPassword()));
+    //     }
+    //     return userProfileRepository.save(profile);
+    // }
+
     @Override
-    public UserProfile createUser(UserProfile profile) {
-        // Test expects password to be encoded
-        if (profile.getPassword() != null) {
-            profile.setPassword(
-                    passwordEncoder.encode(profile.getPassword()));
-        }
-        return userProfileRepository.save(profile);
+public UserProfile createUser(UserProfile profile) {
+
+    if (profile.getRole() == null) {
+        profile.setRole("USER"); // ✅ DEFAULT ROLE
     }
+
+    if (profile.getPassword() != null) {
+        profile.setPassword(passwordEncoder.encode(profile.getPassword()));
+    }
+
+    return userProfileRepository.save(profile);
+}
+
 
     @Override
     public UserProfile getUserById(Long id) {
