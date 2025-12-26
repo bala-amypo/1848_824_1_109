@@ -16,7 +16,6 @@ public class RewardRule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // 🔹 Must reference a valid credit card
     @ManyToOne(optional = false)
     @JoinColumn(name = "card_id")
     private CreditCardRecord card;
@@ -27,16 +26,13 @@ public class RewardRule {
     @Column(nullable = false)
     private String rewardType;
 
-    @Min(1) // multiplier must be > 0
+    @Min(1) 
     @Column(nullable = false)
     private Double multiplier;
 
     @Column(nullable = false)
     private Boolean active;
 
-    
-
-    // -------- Getters & Setters --------
 
     public Long getId() {
         return id;

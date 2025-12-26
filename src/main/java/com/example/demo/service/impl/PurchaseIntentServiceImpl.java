@@ -17,7 +17,7 @@ public class PurchaseIntentServiceImpl implements PurchaseIntentService {
 
     @Override
     public PurchaseIntentRecord createIntent(PurchaseIntentRecord intent) {
-        // Rule: Amount must be > 0
+       
         if (intent.getAmount() == null || intent.getAmount() <= 0) {
             throw new IllegalArgumentException("Amount must be greater than 0");
         }

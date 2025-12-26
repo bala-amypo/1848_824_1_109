@@ -22,7 +22,7 @@ public class RewardRuleServiceImpl implements RewardRuleService {
 
     @Override
     public RewardRule createRule(RewardRule rule) {
-        // ✅ Validate multiplier
+        
         if (rule.getMultiplier() == null || rule.getMultiplier() <= 0) {
             throw new IllegalArgumentException("Multiplier must be greater than 0");
         }
@@ -37,7 +37,6 @@ public RewardRule updateRule(Long id, RewardRule updated) {
         return null;
     }
 
-    // multiplier validation
     if (updated.getMultiplier() != null && updated.getMultiplier() > 0) {
         existing.setMultiplier(updated.getMultiplier());
     } else {
