@@ -156,7 +156,8 @@ public RecommendationRecord generateRecommendation(Long intentId) {
 
     // ✅ MUST THROW RuntimeException
     if (cards == null || cards.isEmpty()) {
-        throw new RuntimeException("No active cards found");
+        throw new IllegalStateException("No active cards found");
+
     }
 
     double bestReward = -1;
