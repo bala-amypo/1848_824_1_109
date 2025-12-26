@@ -17,7 +17,7 @@ public class CreditCardServiceImpl implements CreditCardService {
     }
 
     @Override
-    public CreditCardRecord addCard(Long serId,CreditCardRecord card) {
+    public CreditCardRecord addCard(Long userId,CreditCardRecord card) {
         card.setUserId(userId);
         return creditCardRepository.save(card);
     }
