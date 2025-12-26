@@ -46,15 +46,14 @@ public class UserProfileServiceImpl implements UserProfileService {
         return userProfileRepository.findAll();
     }
 
-    @Override
-    public UserProfile updateUserStatus(Long id, boolean active) {
-        UserProfile user =
-                userProfileRepository.findById(id).orElse(null);
-
-        if (user != null) {
-            user.setActive(active);
-            return userProfileRepository.save(user);
-        }
-        return null;
+@Override
+public UserProfile updateUserStatus(Long id, Boolean active) {
+    UserProfile user = userProfileRepository.findById(id).orElse(null);
+    if (user != null) {
+        user.setActive(active);
+        return userProfileRepository.save(user);
     }
+    return null;
+}
+
 }

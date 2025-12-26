@@ -82,6 +82,16 @@ public class RewardRule {
         this.active = active;
     }
 
+    
+    public Long getCardId() {
+    return cardId;
+}
+
+public void setCardId(Long cardId) {
+    this.cardId = cardId;
+}
+
+
 
 public RewardRule(CreditCardRecord card,
                   String category,
