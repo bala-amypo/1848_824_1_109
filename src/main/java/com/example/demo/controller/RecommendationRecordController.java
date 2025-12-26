@@ -14,7 +14,7 @@ public class RecommendationRecordController {
 
        private final RecommendationEngineService recommendationService;
 
-    public RecommendationController(RecommendationEngineService recommendationService) {
+    public RecommendationRecordController(RecommendationEngineService recommendationService) {
         this.recommendationService = recommendationService;
     }
 

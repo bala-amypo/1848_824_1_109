@@ -14,13 +14,13 @@ public class PurchaseIntentRecordController {
 
     private final PurchaseIntentService service;
 
-    public PurchaseIntentController(PurchaseIntentService service) {
+    public PurchaseIntentRecordController(PurchaseIntentService service) {
         this.service = service;
     }
 
   
     @PostMapping
-    public PurchaseIntentRecordController createIntent(
+    public PurchaseIntentRecord createIntent(
             @RequestBody PurchaseIntentRecord intent) {
         return service.createIntent(intent);
     }
