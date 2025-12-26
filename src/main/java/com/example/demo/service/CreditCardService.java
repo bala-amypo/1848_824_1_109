@@ -1,17 +1,13 @@
-package com.example.demo.service;
-
-import com.example.demo.entity.CreditCardRecord;
-import java.util.List;
-
 public interface CreditCardService {
 
-    CreditCardRecord addCard(Long userId, CreditCardRecord card); // ✅ EXACT
+    // used by controllers
+    CreditCardRecord addCard(Long userId, CreditCardRecord card);
+
+    // 🔥 REQUIRED by tests
+    CreditCardRecord addCard(CreditCardRecord card);
 
     CreditCardRecord updateCard(Long id, CreditCardRecord card);
-
     CreditCardRecord getCardById(Long id);
-
     List<CreditCardRecord> getCardsByUser(Long userId);
-
     List<CreditCardRecord> getAllCards();
 }
