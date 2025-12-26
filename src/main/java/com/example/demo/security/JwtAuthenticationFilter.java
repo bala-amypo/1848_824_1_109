@@ -41,10 +41,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             if (jwtUtil.validateToken(token)) {
 
-                String username = jwtUtil.extractUsername(token);
+                // ✅ FIXED: use email, not username
+                String email = jwtUtil.extractEmail(token);
 
                 UserDetails userDetails =
-                        userDetailsService.loadUserByUsername(username);
+                        userDetailsService.loadUserByUsername(email);
 
                 UsernamePasswordAuthenticationToken auth =
                         new UsernamePasswordAuthenticationToken(
