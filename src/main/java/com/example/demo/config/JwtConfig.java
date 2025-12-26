@@ -25,18 +25,29 @@ import com.example.demo.security.JwtUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+// @Configuration
+// public class JwtConfig {
+
+//     @Bean
+//     public JwtUtil jwtUtil() {
+
+//         // ✅ MUST be byte[]
+//         byte[] secret = "test-secret-key".getBytes();
+
+//         long expirationMs = 60 * 60 * 1000; // 1 hour
+
+//         return new JwtUtil(secret, expirationMs);
+//     }
+// }
+
+
 @Configuration
 public class JwtConfig {
 
     @Bean
     public JwtUtil jwtUtil() {
-
-        // ✅ MUST be byte[]
-        byte[] secret = "test-secret-key".getBytes();
-
-        long expirationMs = 60 * 60 * 1000; // 1 hour
-
+        byte[] secret = "test-secret-key-test-secret-key".getBytes();
+        long expirationMs = 60 * 60 * 1000;
         return new JwtUtil(secret, expirationMs);
     }
 }
-

@@ -200,35 +200,102 @@
 //     }
 // }
 
+// package com.example.demo.security;
+
+// import io.jsonwebtoken.Claims;
+// import io.jsonwebtoken.Jwts;
+// import io.jsonwebtoken.SignatureAlgorithm;
+
+// import java.util.Date;
+
+// public class JwtUtil {
+
+//     private final byte[] secret;
+//     private final long expirationMs;
+
+//     // ✅ REQUIRED constructor (tests use this EXACT signature)
+//     public JwtUtil(byte[] secret, long expirationMs) {
+//         this.secret = secret;
+//         this.expirationMs = expirationMs;
+//     }
+
+//     // ✅ MUST return non-null token
+//     public String generateToken(Long userId, String email, String role) {
+
+//         return Jwts.builder()
+//                 .setSubject(email)                 // email = subject
+//                 .claim("userId", userId)
+//                 .claim("role", role)
+//                 .setIssuedAt(new Date())
+//                 .setExpiration(new Date(System.currentTimeMillis() + expirationMs))
+//                 .signWith(SignatureAlgorithm.HS256, secret)
+//                 .compact();
+//     }
+
+//     // ✅ t50
+//     public String extractEmail(String token) {
+//         return extractAllClaims(token).getSubject();
+//     }
+
+//     // ✅ t52
+//     public Long extractUserId(String token) {
+//         return extractAllClaims(token).get("userId", Long.class);
+//     }
+
+//     // ✅ t51
+//     public String extractRole(String token) {
+//         return extractAllClaims(token).get("role", String.class);
+//     }
+
+//     // ✅ t53 / t54
+//     public boolean validateToken(String token) {
+//         try {
+//             extractAllClaims(token);
+//             return true;
+//         } catch (Exception e) {
+//             return false;
+//         }
+//     }
+
+//     // 🔒 internal helper
+//     private Claims extractAllClaims(String token) {
+//         return Jwts.parser()
+//                 .setSigningKey(secret)
+//                 .parseClaimsJws(token)
+//                 .getBody();
+//     }
+// }
+
 package com.example.demo.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 
+import java.security.Key;
 import java.util.Date;
 
 public class JwtUtil {
 
-    private final byte[] secret;
+    private final Key key;
     private final long expirationMs;
 
-    // ✅ REQUIRED constructor (tests use this EXACT signature)
+    // ✅ REQUIRED constructor (tests expect this)
     public JwtUtil(byte[] secret, long expirationMs) {
-        this.secret = secret;
+        this.key = Keys.hmacShaKeyFor(secret);
         this.expirationMs = expirationMs;
     }
 
-    // ✅ MUST return non-null token
+    // ✅ t49
     public String generateToken(Long userId, String email, String role) {
-
         return Jwts.builder()
-                .setSubject(email)                 // email = subject
+                .setSubject(email)
                 .claim("userId", userId)
                 .claim("role", role)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expirationMs))
-                .signWith(SignatureAlgorithm.HS256, secret)
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
@@ -257,11 +324,12 @@ public class JwtUtil {
         }
     }
 
-    // 🔒 internal helper
     private Claims extractAllClaims(String token) {
-        return Jwts.parser()
-                .setSigningKey(secret)
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
                 .parseClaimsJws(token)
                 .getBody();
     }
 }
+
