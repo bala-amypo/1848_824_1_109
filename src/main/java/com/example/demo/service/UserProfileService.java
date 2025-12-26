@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface UserProfileService
 {
-    UserProfile createUserProfile(UserProfile profile);
+    UserProfile createUser(UserProfile profile);
     UserProfile getUserById(Long id);
     UserProfile findByUserId(String userId);
     List<UserProfile>getAllUsers();

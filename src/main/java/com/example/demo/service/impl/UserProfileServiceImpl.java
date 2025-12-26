@@ -13,7 +13,7 @@ public class UserProfileServiceImpl implements UserProfileService{
 UserProfileRepository upr;
 
 @Override
-public UserProfile createUserProfile(UserProfile profile){
+public UserProfile createUser(UserProfile profile){
 return upr.save(profile);
 }
 @Override
