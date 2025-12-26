@@ -35,9 +35,9 @@ public class UserProfile {
         inverseJoinColumns = @JoinColumn(name = "card_id")
     )
     private Set<CreditCardRecord> favouriteCards;
-    
+
     @PrePersist
-    public void onCreate() {
+    public void prePersist() {
         this.createdAt = LocalDateTime.now();
         // if (this.active == null) {
         //     this.active = true;

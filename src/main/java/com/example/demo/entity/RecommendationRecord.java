@@ -22,10 +22,10 @@ public class RecommendationRecord {
     private LocalDateTime recommendedAt;
 
     @PrePersist
-    public void onCreate() {
+    public void prePersist() {
         this.recommendedAt = LocalDateTime.now();
     }
-    
+
     public Long getId() {
         return id;
     }

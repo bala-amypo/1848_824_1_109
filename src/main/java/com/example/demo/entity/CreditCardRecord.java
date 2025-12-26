@@ -36,7 +36,7 @@ public class CreditCardRecord {
     @ManyToMany(mappedBy = "favouriteCards")
     private Set<UserProfile> favouredByUsers;
     @PrePersist
-    public void onCreate() {
+    public void prePersist() {
         this.createdAt = LocalDateTime.now();
     }
 
