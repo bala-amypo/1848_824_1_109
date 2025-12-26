@@ -12,8 +12,13 @@ import com.example.demo.service.CreditCardService;
 @RequestMapping("/api/cards")
 public class CreditCardRecordController {
 
-    @Autowired
-    private CreditCardService creditCardService;
+   private final CreditCardService creditCardService;
+
+    // ✅ REQUIRED by automated tests
+    public CreditCardController(CreditCardService creditCardService) {
+        this.creditCardService = creditCardService;
+    }
+
 
   
     @PostMapping
