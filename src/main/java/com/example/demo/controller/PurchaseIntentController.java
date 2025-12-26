@@ -10,11 +10,11 @@ import com.example.demo.service.PurchaseIntentService;
 
 @RestController
 @RequestMapping("/purchase-intents")
-public class PurchaseIntentRecordController {
+public class PurchaseIntentController {
 
     private final PurchaseIntentService service;
 
-    public PurchaseIntentRecordController(PurchaseIntentService service) {
+    public PurchaseIntentController(PurchaseIntentService service) {
         this.service = service;
     }
 

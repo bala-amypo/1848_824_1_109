@@ -10,11 +10,11 @@ import com.example.demo.service.RecommendationEngineService;
 
 @RestController
 @RequestMapping("/api/recommendations")
-public class RecommendationRecordController {
+public class RecommendationController {
 
        private final RecommendationEngineService recommendationService;
 
-    public RecommendationRecordController(RecommendationEngineService recommendationService) {
+    public RecommendationController(RecommendationEngineService recommendationService) {
         this.recommendationService = recommendationService;
     }
 
