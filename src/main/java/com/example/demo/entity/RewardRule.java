@@ -20,7 +20,7 @@ public class RewardRule {
     @JoinColumn(name = "card_id")
     private CreditCardRecord card;
     
-    // private Long cardId;
+     private Long cardId;
 
     @Column(nullable = false)
     private String category;
@@ -85,13 +85,13 @@ public class RewardRule {
     }
 
 
-//     public Long getCardId() {
-//     return cardId;
-// }
+    public Long getCardId() {
+    return cardId;
+}
 
-// public void setCardId(Long cardId) {
-//     this.cardId = cardId;
-// }
+public void setCardId(Long cardId) {
+    this.cardId = cardId;
+}
 
 
 
