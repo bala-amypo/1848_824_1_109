@@ -25,7 +25,7 @@ public class CreditCardRecord {
 
     @Column(nullable = false)
     private String issuer;
-    private Long userId;
+   // private Long userId;
 
     private String cardType;
 
