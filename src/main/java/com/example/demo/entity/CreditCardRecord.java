@@ -12,7 +12,11 @@ public class CreditCardRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne(optional = false)
+
+
+    // @ManyToOne(optional = false)
+
+     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private UserProfile user;
 
