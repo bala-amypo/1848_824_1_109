@@ -23,7 +23,7 @@ public class CreditCardRecord {
 
     @Column(nullable = false)
     private String issuer;
-   // private Long userId;
+    private Long userId;
 
     private String cardType;
 
@@ -108,13 +108,13 @@ public class CreditCardRecord {
         return favouredByUsers;
     }
 
-//     public Long getUserId() {
-//     return userId;
-// }
+    public Long getUserId() {
+    return userId;
+}
 
-// public void setUserId(Long userId) {
-//     this.userId = userId;
-// }
+public void setUserId(Long userId) {
+    this.userId = userId;
+}
 
 
     
