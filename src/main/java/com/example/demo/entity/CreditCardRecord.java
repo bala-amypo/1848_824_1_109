@@ -108,13 +108,13 @@ public class CreditCardRecord {
         return favouredByUsers;
     }
 
-    public Long getUserId() {
-    return userId;
-}
+//     public Long getUserId() {
+//     return userId;
+// }
 
-public void setUserId(Long userId) {
-    this.userId = userId;
-}
+// public void setUserId(Long userId) {
+//     this.userId = userId;
+// }
 
 
     
