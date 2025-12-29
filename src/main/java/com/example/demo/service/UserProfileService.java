@@ -1,24 +1,24 @@
-// package com.example.demo.service;
-// import com.example.demo.entity.UserProfile;
-// import java.util.List;
-
-
-// public interface UserProfileService
-// {
-//     UserProfile createUser(UserProfile profile);
-//     UserProfile getUserById(Long id);
-//     UserProfile findByUserId(String userId);
-//     List<UserProfile>getAllUsers();
-//     UserProfile updateUserStatus(Long id,Boolean active);
-// }   
-
 package com.example.demo.service;
 import com.example.demo.entity.UserProfile;
 import java.util.List;
-public interface UserProfileService {
-UserProfile createUser(UserProfile profile);UserProfile getUserById(Long id);
-UserProfile findByUserId(String userId);
-UserProfile findByEmail(String email);
-List<UserProfile> getAllUsers();
-UserProfile updateUserStatus(Long id, boolean active);
-}
+
+
+public interface UserProfileService
+{
+    UserProfile createUser(UserProfile profile);
+    UserProfile getUserById(Long id);
+    UserProfile findByUserId(String userId);
+    List<UserProfile>getAllUsers();
+    UserProfile updateUserStatus(Long id,Boolean active);
+}   
+
+// package com.example.demo.service;
+// import com.example.demo.entity.UserProfile;
+// import java.util.List;
+// public interface UserProfileService {
+// UserProfile createUser(UserProfile profile);UserProfile getUserById(Long id);
+// UserProfile findByUserId(String userId);
+// UserProfile findByEmail(String email);
+// List<UserProfile> getAllUsers();
+// UserProfile updateUserStatus(Long id, boolean active);
+// }
